@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentos Legales — Medallo Fútbol Club</title>
+  <meta name="description" content="Documentos legales y estatutarios de la Corporación Medallo Deportes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:      #1B1F5E;
+      --navy-dark: #0D0F2A;
+      --gold:      #C89B2A;
+      --gold-light:#E0B84A;
+      --gray:      #F5F5F5;
+      --white:     #FFFFFF;
+      --bebas:     'Bebas Neue', sans-serif;
+      --body:      'Manrope', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--body); color: #333; background: var(--white); }
+    a    { text-decoration: none; color: inherit; }
+    img  { max-width: 100%; display: block; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── NAV ── */
+    #nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 14px 0; background: rgba(13,15,42,.97); backdrop-filter: blur(12px); box-shadow: 0 2px 20px rgba(0,0,0,.4); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo-img { height: 48px; width: auto; }
+    .nav-back { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.65); display: flex; align-items: center; gap: 8px; transition: color .2s; }
+    .nav-back:hover { color: var(--gold); }
+    .nav-back::before { content: '←'; font-size: 16px; }
+
+    /* ── HERO BANNER ── */
+    .page-banner {
+      background: var(--navy-dark);
+      padding: 120px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-banner::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(200,155,42,.12) 0%, transparent 60%);
+    }
+    .banner-inner { position: relative; z-index: 2; }
+    .banner-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .banner-title { font-family: var(--bebas); font-size: clamp(36px, 5vw, 64px); color: #fff; line-height: 1; margin-bottom: 16px; }
+    .banner-sub { font-size: 15px; color: rgba(255,255,255,.5); max-width: 500px; }
+    .gold-line { width: 48px; height: 3px; background: var(--gold); margin: 14px 0 20px; border-radius: 2px; }
+
+    /* ── LAYOUT ── */
+    .legal-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 48px;
+      padding: 60px 0 100px;
+      align-items: start;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar { position: sticky; top: 90px; }
+    .sidebar-title { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .doc-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .doc-list li a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 11px 14px;
+      border-radius: 3px;
+      font-size: 13px; font-weight: 600;
+      color: #555;
+      border: 1px solid transparent;
+      transition: all .2s;
+      line-height: 1.4;
+    }
+    .doc-list li a:hover { color: var(--navy); background: var(--gray); }
+    .doc-list li a.active { color: var(--navy); background: var(--gray); border-color: var(--gold); }
+    .doc-list li a .doc-num {
+      flex-shrink: 0;
+      width: 24px; height: 24px;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700;
+    }
+    .doc-list li a.active .doc-num { background: var(--gold); }
+
+    /* ── CONTENT AREA ── */
+    .doc-content { min-height: 60vh; }
+
+    /* ── DOCUMENT CARD ── */
+    .doc-card {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+    .doc-card-header {
+      background: var(--navy);
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+    }
+    .doc-card-header::after {
+      content: '';
+      position: absolute; top: 0; left: 0; bottom: 0;
+      width: 4px;
+      background: var(--gold);
+    }
+    .doc-number-badge {
+      width: 40px; height: 40px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--bebas);
+      font-size: 20px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .doc-card-title { font-family: var(--bebas); font-size: 22px; letter-spacing: 1px; color: #fff; line-height: 1.2; }
+    .doc-card-body { padding: 36px 32px; }
+    .doc-text { font-size: 16px; line-height: 1.9; color: #444; }
+    .doc-text strong { color: var(--navy); font-weight: 700; }
+
+    /* ── DATA GRID ── */
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+      padding-top: 28px;
+      border-top: 1px solid #f0f0f0;
+    }
+    .data-item { }
+    .data-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .data-value { font-size: 14px; font-weight: 600; color: var(--navy); }
+
+    /* ── COMING SOON ── */
+    .coming-soon {
+      padding: 40px 32px;
+      border: 2px dashed #e0e0e0;
+      border-radius: 4px;
+      text-align: center;
+      color: #aaa;
+    }
+    .coming-soon .cs-icon { font-size: 32px; margin-bottom: 12px; }
+    .coming-soon p { font-size: 14px; }
+
+    /* ── DOWNLOAD BTN ── */
+    .doc-download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: auto;
+      flex-shrink: 0;
+      background: rgba(200,155,42,.15);
+      color: var(--gold);
+      border: 1px solid rgba(200,155,42,.4);
+      border-radius: 6px;
+      padding: 7px 14px;
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .2s, color .2s, border-color .2s;
+      cursor: pointer;
+    }
+    .doc-download-btn:hover { background: var(--gold); color: var(--navy-dark); border-color: var(--gold); }
+    .doc-download-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+    /* ── FOOTER ── */
+    footer { background: #060812; padding: 48px 0 24px; }
+    .ft-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: gap; }
+    .ft-logo-sm { height: 40px; }
+    .ft-copy { font-size: 12px; color: rgba(255,255,255,.25); }
+    .ft-back { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); }
+    .ft-back:hover { color: var(--gold-light); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .legal-layout { grid-template-columns: 1fr; gap: 32px; }
+      .sidebar { position: static; }
+      .data-grid { grid-template-columns: 1fr; }
+      .doc-card-body { padding: 24px 20px; }
+      .doc-card-header { padding: 18px 20px; }
+      .ft-bottom { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="../index.html">
+        <img src="../assets/logo-dorado.png" alt="Medallo Fútbol Club" class="nav-logo-img">
+      </a>
+      <a href="../index.html" class="nav-back">Volver al inicio</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── BANNER ── -->
+<div class="page-banner">
+  <div class="container">
+    <div class="banner-inner">
+      <span class="banner-tag">Corporación Medallo Deportes</span>
+      <div class="gold-line"></div>
+      <h1 class="banner-title">Documentos<br>Legales</h1>
+      <p class="banner-sub">Estatutos, reglamentos y documentos oficiales de la Corporación Medallo Deportes. NIT 901.810.224-7.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── CONTENIDO ── -->
+<div class="container">
+  <div class="legal-layout">
+
+    <!-- Sidebar índice -->
+    <aside class="sidebar">
+      <p class="sidebar-title">Índice de documentos</p>
+      <ul class="doc-list">
+        <li>
+          <a href="#doc-1" class="active">
+            <span class="doc-num">1</span>
+            Denominación, Identificación y Domicilio
+          </a>
+        </li>
+        <li>
+          <a href="#doc-2">
+            <span class="doc-num">2</span>
+            Descripción de la Actividad Meritoria
+          </a>
+        </li>
+        <li>
+          <a href="#doc-3">
+            <span class="doc-num">3</span>
+            Monto y Destino del Beneficio Neto o Excedente
+          </a>
+        </li>
+        <li>
+          <a href="#doc-4">
+            <span class="doc-num">4</span>
+            Monto y Destino de las Asignaciones Permanentes
+          </a>
+        </li>
+        <li>
+          <a href="#doc-5">
+            <span class="doc-num">5</span>
+            Personas en Cargos Gerenciales o de Control
+          </a>
+        </li>
+        <li>
+          <a href="#doc-6">
+            <span class="doc-num">6</span>
+            Monto Total de los Pagos Salariales a Directivos
+          </a>
+        </li>
+        <li>
+          <a href="#doc-7">
+            <span class="doc-num">7</span>
+            Nombre e Identificación de los Fundadores
+          </a>
+        </li>
+        <li>
+          <a href="#doc-8">
+            <span class="doc-num">8</span>
+            Monto del Patrimonio a 31 de Diciembre
+          </a>
+        </li>
+        <li>
+          <a href="#doc-9">
+            <span class="doc-num">9</span>
+            Informe de Donaciones Recibidas
+          </a>
+        </li>
+        <li>
+          <a href="#doc-10">
+            <span class="doc-num">10</span>
+            Donaciones Recibidas en Eventos Colectivos
+          </a>
+        </li>
+        <li>
+          <a href="#doc-11">
+            <span class="doc-num">11</span>
+            Informe Anual de Resultados
+          </a>
+        </li>
+        <li>
+          <a href="#doc-12">
+            <span class="doc-num">12</span>
+            Estados Financieros NIIF 2025
+          </a>
+        </li>
+        <li>
+          <a href="#doc-13">
+            <span class="doc-num">13</span>
+            Certificado Cumplimiento Requisitos RTE
+          </a>
+        </li>
+        <li>
+          <a href="#doc-14">
+            <span class="doc-num">14</span>
+            Recursos de Cooperación Internacional
+          </a>
+        </li>
+        <li>
+          <a href="#doc-15">
+            <span class="doc-num">15</span>
+            Certificado de Existencia y Representación
+          </a>
+        </li>
+        <li>
+          <a href="#doc-16">
+            <span class="doc-num">16</span>
+            Acta de Asamblea No. 002 — 2026
+          </a>
+        </li>
+        <li>
+          <a href="#doc-17">
+            <span class="doc-num">17</span>
+            Estatutos de la Corporación
+          </a>
+        </li>
+        <li>
+          <a href="#doc-18">
+            <span class="doc-num">18</span>
+            Certificado de Antecedentes Judiciales
+          </a>
+        </li>
+        <li>
+          <a href="#doc-19">
+            <span class="doc-num">19</span>
+            Certificado de Pagos a Directivos
+          </a>
+        </li>
+        <li>
+          <a href="#doc-20">
+            <span class="doc-num">20</span>
+            Memoria Económica
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Documentos -->
+    <main class="doc-content">
+
+      <!-- Documento 1 -->
+      <div class="doc-card" id="doc-1">
+        <div class="doc-card-header">
+          <div class="doc-number-badge">1</div>
+          <h2 class="doc-card-title">La denominación, la identificación<br>y el domicilio de la entidad</h2>
+        </div>
+        <div class="doc-card-body">
+          <p class="doc-text">
+            La <strong>CORPORACION MEDALLO DEPORTES</strong>, es una entidad sin ánimo de lucro con NIT. <strong>901.810.224-7</strong>, de carácter privado, constituida en Cámara de Comercio de Medellín según acta el <strong>10 de enero de 2024</strong>, de los Asociados, inscrita el <strong>08 de marzo de 2024</strong>, con el No. 697, del Libro I, ubicada en la <strong>CL 113 A 67 27</strong> el municipio de <strong>Medellín (Antioquia)</strong>, con número de teléfono <strong>305 4595734</strong>.
+          </p>
+          <div class="data-grid">
+            <div class="data-item">
+              <p class="data-label">Razón social</p>
+              <p class="data-value">Corporación Medallo Deportes</p>
+            </div>
+            <div class="data-item">
+              <p class="data-label">NIT</p>
+              <p class="data-value">901.810.224-7</p>
+            </div>
+            <div class="data-item">
+              <p class="data-label">Naturaleza jurídica</p>
+              <p class="data-value">Entidad sin ánimo de lucro — Carácter privado</p>
+            </div>
+            <div class="data-item">
+              <p class="data-label">Fecha constitución</p>
+              <p class="data-value">10 de enero de 2024</p>
+            </div>
+            <div class="data-item">
+              <p class="data-label">Fecha inscripción</p>
+              <p class="data-value">08 de marzo de 2024 — No. 697, Libro I</p>
+            </div>
+            <div class="data-item">
+              <p class="data-label">Domicilio</p>
+              <p class="data-value">CL 113 A 67 27, Medellín, Antioquia</p>
+            </div>
+            <div class="data-item">
+              <p class="data-label">Teléfono</p>
+              <p class="data-value">305 4595734</p>
+            </div>
+            <div class="data-item">
+              <p class="data-label">Cámara de Comercio</p>
+              <p class="data-value">Cámara de Comercio de Medellín</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documento 2 -->
+      <div class="doc-card" id="doc-2">
+        <div class="doc-card-header">
+          <div class="doc-number-badge">2</div>
+          <h2 class="doc-card-title">Descripción de la actividad meritoria</h2>
+        </div>
+        <div class="doc-card-body">
+          <p class="doc-text">
+            La <strong>CORPORACIÓN MEDALLO DEPORTES</strong> desarrollará iniciativas a través del deporte que contribuyan significativamente al bienestar social. Estas actividades estarán orientadas hacia el fortalecimiento comunitario, proporcionando espacios para el esparcimiento y la recreación, así como estrategias preventivas contra las adicciones, entre otros beneficios sociales.
+          </p>
+          <p class="doc-text" style="margin-top: 16px;">
+            Actividad que se encuentra descrita en el <strong>numeral 8 del artículo 359 del Estatuto Tributario</strong>, ésta es de interés general y de acceso a la comunidad, en los términos previstos en los Parágrafos 1 y 2 del artículo 359 del Estatuto Tributario.
+          </p>
+          <div class="data-grid" style="margin-top: 28px;">
+            <div class="data-item">
+              <p class="data-label">Marco legal</p>
+              <p class="data-value">Art. 359 E.T. — Numeral 8</p>
+            </div>
+            <div class="data-item">
+              <p class="data-label">Naturaleza</p>
+              <p class="data-value">Interés general — Acceso a la comunidad</p>
+            </div>
+          </div>
+          <!-- Tabla CIIU -->
+          <table style="width:100%;border-collapse:collapse;margin-top:28px;font-size:14px;">
+            <thead>
+              <tr style="background:var(--navy);">
+                <th style="padding:12px 16px;text-align:left;color:#fff;font-weight:700;letter-spacing:.5px;width:30%;">Código CIIU</th>
+                <th style="padding:12px 16px;text-align:left;color:#fff;font-weight:700;letter-spacing:.5px;">Descripción de la actividad económica</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:var(--gray);">
+                <td style="padding:12px 16px;font-weight:700;color:var(--gold);">9499</td>
+                <td style="padding:12px 16px;color:#444;">Actividades de otras asociaciones ncp</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Documento 3 -->
+      <div class="doc-card" id="doc-3">
+        <div class="doc-card-header">
+          <div class="doc-number-badge">3</div>
+          <h2 class="doc-card-title">Monto y destino de la reinversión<br>del beneficio o excedente neto</h2>
+        </div>
+        <div class="doc-card-body">
+          <p class="doc-text">
+            De acuerdo al <strong>artículo 1.2.1.5.1.27 del Decreto 2150/2017</strong> y según <strong>acta No. 002 del 16 de marzo de 2026</strong>, de Asamblea General ordinaria de la <strong>CORPORACION MEDALLO DEPORTES</strong> se acuerda que:
+          </p>
+          <div style="margin: 24px 0; padding: 24px 28px; background: var(--gray); border-left: 4px solid var(--gold); border-radius: 0 3px 3px 0;">
+            <p class="doc-text">
+              De acuerdo a los estados financieros con corte a <strong>31 de diciembre de 2025</strong>, CORPORACION MEDALLO DEPORTES no tuvo movimientos, lo que indica que <strong>no hay Beneficio neto a reinvertir</strong>.
+            </p>
+          </div>
+          <div class="data-grid">
+            <div class="data-item">
+              <p class="data-label">Marco legal</p>
+              <p class="data-value">Art. 1.2.1.5.1.27 — Decreto 2150/2017</p>
+            </div>
+            <div class="data-item">
+              <p class="data-label">Acta de asamblea</p>
+              <p class="data-value">No. 002 — 16 de marzo de 2026</p>
+            </div>
+            <div class="data-item">
+              <p class="data-label">Corte estados financieros</p>
+              <p class="data-value">31 de diciembre de 2025</p>
+            </div>
+            <div class="data-item">
+              <p class="data-label">Beneficio neto a reinvertir</p>
+              <p class="data-value" style="color:var(--navy);">Sin movimientos — No aplica</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documento 4 -->
+      <div class="doc-card" id="doc-4">
+        <div class="doc-card-header">
+          <div class="doc-number-badge">4</div>
+          <h2 class="doc-card-title">Monto y destino de las<br>asignaciones permanentes</h2>
+        </div>
+        <div class="doc-card-body">
+          <div style="padding: 24px 28px; background: var(--gray); border-left: 4px solid var(--gold); border-radius: 0 3px 3px 0;">
+            <p class="doc-text">
+              A la fecha la <strong>CORPORACION MEDALLO DEPORTES</strong> no posee asignaciones permanentes.
+            </p>
+          </div>
+          <div class="data-grid" style="margin-top: 24px;">
+            <div class="data-item">
+              <p class="data-label">Estado</p>
+              <p class="data-value">Sin asignaciones permanentes</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documento 5 -->
+      <div class="doc-card" id="doc-5">
+        <div class="doc-card-header">
+          <div class="doc-number-badge">5</div>
+          <h2 class="doc-card-title">Nombre e identificación de las personas<br>que ocupan cargos gerenciales o de control</h2>
+        </div>
+        <div class="doc-card-body">
+          <table style="width:100%;border-collapse:collapse;font-size:14px;">
+            <thead>
+              <tr style="background:var(--navy);">
+                <th style="padding:12px 16px;text-align:left;color:#fff;font-weight:700;letter-spacing:.5px;">Nombre</th>
+                <th style="padding:12px 16px;text-align:left;color:#fff;font-weight:700;letter-spacing:.5px;">Documento de identificación</th>
+                <th style="padding:12px 16px;text-align:center;color:#fff;font-weight:700;letter-spacing:.5px;">Cargo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#fff;border-bottom:1px solid #f0f0f0;">
+                <td style="padding:14px 16px;font-weight:600;color:var(--navy);">Sara María Arboleda Castrillón</td>
+                <td style="padding:14px 16px;color:#555;">c.c 1152454918</td>
+                <td style="padding:14px 16px;text-align:center;"><span style="background:var(--navy);color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;padding:4px 12px;border-radius:20px;">Presidente</span></td>
+              </tr>
+              <tr style="background:var(--gray);border-bottom:1px solid #f0f0f0;">
+                <td style="padding:14px 16px;font-weight:600;color:var(--navy);">Angie Paola Mosquera Castro</td>
+                <td style="padding:14px 16px;color:#555;">c.c 1090487711</td>
+                <td style="padding:14px 16px;text-align:center;"><span style="background:var(--navy);color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;padding:4px 12px;border-radius:20px;">Vicepresidente</span></td>
+              </tr>
+              <tr style="background:#fff;border-bottom:1px solid #f0f0f0;">
+                <td style="padding:14px 16px;font-weight:600;color:var(--navy);">Paola Andrea Garces Escobar</td>
+                <td style="padding:14px 16px;color:#555;">c.c 32243247</td>
+                <td style="padding:14px 16px;text-align:center;"><span style="background:var(--navy);color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;padding:4px 12px;border-radius:20px;">Director General</span></td>
+              </tr>
+              <tr style="background:var(--gray);border-bottom:1px solid #f0f0f0;">
+                <td style="padding:14px 16px;font-weight:600;color:var(--navy);">Angie Paola Giraldo Duque</td>
+                <td style="padding:14px 16px;color:#555;">c.c 1007382017</td>
+                <td style="padding:14px 16px;text-align:center;"><span style="background:var(--navy);color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;padding:4px 12px;border-radius:20px;">Administrador</span></td>
+              </tr>
+              <tr style="background:#fff;">
+                <td style="padding:14px 16px;font-weight:600;color:var(--navy);">Valeria Álvarez Rueda</td>
+                <td style="padding:14px 16px;color:#555;">c.c 1017269396</td>
+                <td style="padding:14px 16px;text-align:center;"><span style="background:var(--navy);color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;padding:4px 12px;border-radius:20px;">Secretario</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Documento 6 -->
+      <div class="doc-card" id="doc-6">
+        <div class="doc-card-header">
+          <div class="doc-number-badge">6</div>
+          <h2 class="doc-card-title">Monto total de los pagos<br>salariales a directivos</h2>
+        </div>
+        <div class="doc-card-body">
+          <div style="padding: 24px 28px; background: var(--gray); border-left: 4px solid var(--gold); border-radius: 0 3px 3px 0;">
+            <p class="doc-text">
+              Durante <strong>2025</strong>, la <strong>CORPORACION MEDALLO DEPORTES</strong> no realizó pagos salariales para remunerar a directivos.
+            </p>
+          </div>
+          <div class="data-grid" style="margin-top: 24px;">
+            <div class="data-item">
+              <p class="data-label">Período</p>
+              <p class="data-value">Año 2025</p>
+            </div>
+            <div class="data-item">
+              <p class="data-label">Monto total pagos salariales</p>
+              <p class="data-value">$0 — Sin pagos realizados</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documento 7 -->
+      <div class="doc-card" id="doc-7">
+        <div class="doc-card-header">
+          <div class="doc-number-badge">7</div>
+          <h2 class="doc-card-title">Nombre e identificación<br>de los fundadores</h2>
+        </div>
+        <div class="doc-card-body">
+          <p class="doc-text">
+            Tal como consta en <strong>Acta del 10 de enero de 2024</strong>, de los Asociados, inscrita en la Cámara de Comercio el <strong>08 de marzo de 2024</strong>, con el No. 697, del Libro I, se constituyó la entidad sin ánimo de lucro denominada <strong>CORPORACIÓN MEDALLO DEPORTES</strong>:
+          </p>
+          <table style="width:100%;border-collapse:collapse;font-size:14px;margin-top:24px;">
+            <thead>
+              <tr style="background:var(--navy);">
+                <th style="padding:12px 16px;text-align:left;color:#fff;font-weight:700;letter-spacing:.5px;">Nombre</th>
+                <th style="padding:12px 16px;text-align:left;color:#fff;font-weight:700;letter-spacing:.5px;">Documento de identificación</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#fff;border-bottom:1px solid #f0f0f0;">
+                <td style="padding:14px 16px;font-weight:600;color:var(--navy);">Sara María Arboleda Castrillón</td>
+                <td style="padding:14px 16px;color:#555;">c.c 1152454918</td>
+              </tr>
+              <tr style="background:var(--gray);border-bottom:1px solid #f0f0f0;">
+                <td style="padding:14px 16px;font-weight:600;color:var(--navy);">Paola Andrea Garces Escobar</td>
+                <td style="padding:14px 16px;color:#555;">c.c 32243247</td>
+              </tr>
+              <tr style="background:#fff;border-bottom:1px solid #f0f0f0;">
+                <td style="padding:14px 16px;font-weight:600;color:var(--navy);">Angie Paola Mosquera Castro</td>
+                <td style="padding:14px 16px;color:#555;">c.c 1090487711</td>
+              </tr>
+              <tr style="background:var(--gray);border-bottom:1px solid #f0f0f0;">
+                <td style="padding:14px 16px;font-weight:600;color:var(--navy);">Angie Paola Giraldo Duque</td>
+                <td style="padding:14px 16px;color:#555;">c.c 1007382017</td>
+              </tr>
+              <tr style="background:#fff;">
+                <td style="padding:14px 16px;font-weight:600;color:var(--navy);">Valeria Álvarez Rueda</td>
+                <td style="padding:14px 16px;color:#555;">c.c 1017269396</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Documento 8 -->
+      <div class="doc-card" id="doc-8">
+        <div class="doc-card-header">
+          <div class="doc-number-badge">8</div>
+          <h2 class="doc-card-title">Monto del patrimonio a 31 de diciembre<br>del año inmediatamente anterior</h2>
+        </div>
+        <div class="doc-card-body">
+          <p class="doc-text">
+            Tal como consta en los <strong>Estados Financieros de 2025</strong> de la <strong>CORPORACIÓN MEDALLO DEPORTES</strong>, el patrimonio de la entidad es el siguiente:
+          </p>
+          <table style="width:100%;border-collapse:collapse;font-size:15px;margin-top:24px;max-width:480px;">
+            <thead>
+              <tr style="background:var(--navy);">
+                <th style="padding:14px 20px;text-align:left;color:#fff;font-weight:700;letter-spacing:.5px;">Concepto</th>
+                <th style="padding:14px 20px;text-align:right;color:var(--gold);font-weight:700;letter-spacing:.5px;">Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#fff;border-bottom:1px solid #f0f0f0;">
+                <td style="padding:16px 20px;font-weight:600;color:var(--navy);">Patrimonio Contable</td>
+                <td style="padding:16px 20px;text-align:right;font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--navy);letter-spacing:1px;">$1.000.000</td>
+              </tr>
+              <tr style="background:var(--gray);">
+                <td style="padding:16px 20px;font-weight:600;color:var(--navy);">Patrimonio Fiscal</td>
+                <td style="padding:16px 20px;text-align:right;font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--navy);letter-spacing:1px;">$1.000.000</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="data-grid" style="margin-top:24px;">
+            <div class="data-item">
+              <p class="data-label">Corte estados financieros</p>
+              <p class="data-value">31 de diciembre de 2025</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documento 9 -->
+      <div class="doc-card" id="doc-9">
+        <div class="doc-card-header">
+          <div class="doc-number-badge">9</div>
+          <h2 class="doc-card-title">Informe de donaciones recibidas</h2>
+        </div>
+        <div class="doc-card-body">
+          <div style="padding: 24px 28px; background: var(--gray); border-left: 4px solid var(--gold); border-radius: 0 3px 3px 0;">
+            <p class="doc-text">
+              Durante el año <strong>2025</strong> la <strong>CORPORACIÓN MEDALLO DEPORTES</strong> no recibió donaciones.
+            </p>
+          </div>
+          <div class="data-grid" style="margin-top: 24px;">
+            <div class="data-item">
+              <p class="data-label">Período</p>
+              <p class="data-value">Año 2025</p>
+            </div>
+            <div class="data-item">
+              <p class="data-label">Donaciones recibidas</p>
+              <p class="data-value">Ninguna</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documento 10 -->
+      <div class="doc-card" id="doc-10">
+        <div class="doc-card-header">
+          <div class="doc-number-badge">10</div>
+          <h2 class="doc-card-title">Donaciones recibidas<br>en eventos colectivos</h2>
+        </div>
+        <div class="doc-card-body">
+          <div style="padding: 24px 28px; background: var(--gray); border-left: 4px solid var(--gold); border-radius: 0 3px 3px 0;">
+            <p class="doc-text">
+              Durante el año <strong>2025</strong> la <strong>CORPORACIÓN MEDALLO DEPORTES</strong> no recibió donaciones en eventos colectivos.
+            </p>
+          </div>
+          <div class="data-grid" style="margin-top: 24px;">
+            <div class="data-item">
+              <p class="data-label">Período</p>
+              <p class="data-value">Año 2025</p>
+            </div>
+            <div class="data-item">
+              <p class="data-label">Donaciones en eventos colectivos</p>
+              <p class="data-value">Ninguna</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documento 11 -->
+      <div class="doc-card" id="doc-11">
+        <div class="doc-card-header">
+          <div class="doc-number-badge">11</div>
+          <h2 class="doc-card-title">Informe anual de resultados<br><span style="font-size:16px;opacity:.7;font-family:'Manrope',sans-serif;font-weight:600;letter-spacing:0;">Año 2025</span></h2>
+        </div>
+        <div class="doc-card-body">
+          <!-- Encabezado carta -->
+          <div style="margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid #f0f0f0;">
+            <p style="font-size:13px;color:#888;margin-bottom:4px;">Dirigido a:</p>
+            <p style="font-size:15px;font-weight:700;color:var(--navy);">Asamblea General</p>
+            <p style="font-size:13px;color:#888;">Medellín, Colombia</p>
+          </div>
+          <!-- Cuerpo -->
+          <p class="doc-text" style="margin-bottom:16px;">
+            En concordancia con el quehacer de nuestra visión y misión, a pesar de que el año <strong>2025</strong> trajo consigo tantas eventualidades, se lograron algunos contactos interesados en apoyar nuestro objeto, pero a la fecha sin concluir nada.
+          </p>
+          <p class="doc-text">
+            Durante este año trabajaremos en consonancia con nuestra razón de ser, a través de los diferentes programas sociales a los que podemos acceder.
+          </p>
+          <!-- Firma -->
+          <div style="margin-top:36px;padding-top:24px;border-top:1px solid #f0f0f0;display:flex;align-items:center;gap:16px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span style="color:var(--gold);font-size:18px;">✍</span>
+            </div>
+            <div>
+              <p style="font-size:13px;font-weight:700;color:var(--navy);">Junta Directiva</p>
+              <p style="font-size:12px;color:#888;">Corporación Medallo Deportes — 2025</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documento 12 -->
+      <div class="doc-card" id="doc-12">
+        <div class="doc-card-header">
+          <div class="doc-number-badge">12</div>
+          <h2 class="doc-card-title">Estados Financieros NIIF 2025<br><span style="font-size:16px;opacity:.7;font-family:'Manrope',sans-serif;font-weight:600;letter-spacing:0;">Al 31 de diciembre de 2025 – 2024</span></h2>
+        </div>
+        <div class="doc-card-body">
+
+          <!-- Certificación -->
+          <p style="font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Certificación del Representante Legal y Contador</p>
+          <p class="doc-text" style="margin-bottom:14px;">El suscrito Representante Legal y el Contador de <strong>CORPORACION MEDALLO DEPORTES</strong>, certifican que los Estados de Situación Financiera, con cortes a 31 de diciembre de 2025–2024, han sido fielmente tomados de los libros de contabilidad y que antes de ser puestos a disposición, hemos verificado las siguientes afirmaciones contenidas en ellos:</p>
+          <ol style="padding-left:20px;margin-bottom:24px;display:flex;flex-direction:column;gap:8px;">
+            <li class="doc-text">Todos los Activos, Pasivos, y demás hechos económicos que fueron incluidos en los Estados Financieros existen y así mismo han sido reconocidas e incluidas todas las transacciones para cada una de las vigencias.</li>
+            <li class="doc-text">Los Activos representan probables beneficios económicos futuros (derechos) y los Pasivos representan probables erogaciones económicas futuras obtenidas o que están a cargo de la Entidad.</li>
+            <li class="doc-text">Todos los elementos han sido reconocidos por sus valores apropiados, de acuerdo con las Normas Internacionales de Información Financiera (NIIF) tal como han sido adoptados en Colombia y sus correspondientes interpretaciones (CINIIF), emitidas por la IASB.</li>
+            <li class="doc-text">Todos los hechos económicos que afectan la entidad han sido correctamente clasificados, descritos y revelados en los Estados financieros.</li>
+            <li class="doc-text">Con corte a 31 de diciembre de 2025, no se conocen hechos que puedan afectar el Estado de la Situación Financiera de la corporación.</li>
+          </ol>
+          <div class="data-grid" style="margin-bottom:32px;">
+            <div class="data-item"><p class="data-label">Lugar y fecha</p><p class="data-value">Medellín, 06 de julio de 2026</p></div>
+            <div class="data-item"><p class="data-label">Representante Legal</p><p class="data-value">Sara Arboleda Castrillon</p></div>
+            <div class="data-item"><p class="data-label">Contador</p><p class="data-value">Marcela Arango Arenas — TP 186737-T</p></div>
+          </div>
+
+          <!-- Estado de Situación Financiera -->
+          <p style="font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Estado de Situación Financiera</p>
+          <p style="font-size:12px;color:#888;margin-bottom:16px;text-align:right;">Expresado en pesos colombianos</p>
+          <div style="overflow-x:auto;margin-bottom:32px;">
+            <table style="width:100%;border-collapse:collapse;font-size:14px;min-width:480px;">
+              <thead>
+                <tr style="background:var(--navy);">
+                  <th style="padding:12px 16px;text-align:left;color:#fff;font-weight:700;">Concepto</th>
+                  <th style="padding:12px 16px;text-align:right;color:var(--gold);font-weight:700;">2025</th>
+                  <th style="padding:12px 16px;text-align:right;color:var(--gold);font-weight:700;">2024</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="background:#e8ebf5;"><td colspan="3" style="padding:10px 16px;font-weight:700;color:var(--navy);font-size:13px;letter-spacing:.5px;">ACTIVO CORRIENTE</td></tr>
+                <tr style="background:#fff;border-bottom:1px solid #f0f0f0;"><td style="padding:10px 16px 10px 24px;color:#555;">Efectivo y equivalente a efectivo</td><td style="padding:10px 16px;text-align:right;color:#555;">—</td><td style="padding:10px 16px;text-align:right;color:#555;">—</td></tr>
+                <tr style="background:var(--gray);border-bottom:1px solid #f0f0f0;"><td style="padding:10px 16px 10px 24px;color:#555;">Cuentas por cobrar</td><td style="padding:10px 16px;text-align:right;font-weight:600;color:var(--navy);">1.000.000</td><td style="padding:10px 16px;text-align:right;font-weight:600;color:var(--navy);">1.000.000</td></tr>
+                <tr style="background:#fff;border-bottom:1px solid #f0f0f0;"><td style="padding:10px 16px 10px 24px;color:#555;">Diferidos</td><td style="padding:10px 16px;text-align:right;color:#555;">—</td><td style="padding:10px 16px;text-align:right;color:#555;">—</td></tr>
+                <tr style="background:#e8ebf5;border-bottom:2px solid var(--navy);"><td style="padding:10px 16px;font-weight:700;color:var(--navy);">TOTAL ACTIVO CORRIENTE</td><td style="padding:10px 16px;text-align:right;font-weight:700;color:var(--navy);">1.000.000</td><td style="padding:10px 16px;text-align:right;font-weight:700;color:var(--navy);">1.000.000</td></tr>
+                <tr style="background:#e8ebf5;"><td colspan="3" style="padding:10px 16px;font-weight:700;color:var(--navy);font-size:13px;letter-spacing:.5px;">ACTIVO NO CORRIENTE</td></tr>
+                <tr style="background:#fff;border-bottom:1px solid #f0f0f0;"><td style="padding:10px 16px 10px 24px;color:#555;">Propiedad, Planta y Equipo</td><td style="padding:10px 16px;text-align:right;color:#555;">—</td><td style="padding:10px 16px;text-align:right;color:#555;">—</td></tr>
+                <tr style="background:var(--navy);"><td style="padding:12px 16px;font-weight:700;color:#fff;font-size:15px;">TOTAL ACTIVO</td><td style="padding:12px 16px;text-align:right;font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold);letter-spacing:1px;">1.000.000</td><td style="padding:12px 16px;text-align:right;font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold);letter-spacing:1px;">1.000.000</td></tr>
+                <tr><td colspan="3" style="padding:8px;"></td></tr>
+                <tr style="background:#e8ebf5;"><td colspan="3" style="padding:10px 16px;font-weight:700;color:var(--navy);font-size:13px;letter-spacing:.5px;">PASIVO CORRIENTE</td></tr>
+                <tr style="background:#fff;border-bottom:1px solid #f0f0f0;"><td style="padding:10px 16px 10px 24px;color:#555;">Cuentas por pagar</td><td style="padding:10px 16px;text-align:right;color:#555;">—</td><td style="padding:10px 16px;text-align:right;color:#555;">—</td></tr>
+                <tr style="background:var(--gray);border-bottom:1px solid #f0f0f0;"><td style="padding:10px 16px 10px 24px;color:#555;">Pasivos por impuestos</td><td style="padding:10px 16px;text-align:right;color:#555;">—</td><td style="padding:10px 16px;text-align:right;color:#555;">—</td></tr>
+                <tr style="background:#fff;border-bottom:2px solid var(--navy);"><td style="padding:10px 16px;font-weight:700;color:var(--navy);">TOTAL PASIVO</td><td style="padding:10px 16px;text-align:right;font-weight:700;color:var(--navy);">—</td><td style="padding:10px 16px;text-align:right;font-weight:700;color:var(--navy);">—</td></tr>
+                <tr style="background:var(--navy);"><td style="padding:12px 16px;font-weight:700;color:#fff;font-size:15px;">PATRIMONIO NETO</td><td style="padding:12px 16px;text-align:right;font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold);letter-spacing:1px;">1.000.000</td><td style="padding:12px 16px;text-align:right;font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold);letter-spacing:1px;">1.000.000</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Estado del Resultado Integral -->
+          <p style="font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Estado del Resultado Integral</p>
+          <div style="padding:20px 24px;background:var(--gray);border-left:4px solid var(--gold);border-radius:0 3px 3px 0;margin-bottom:32px;">
+            <p class="doc-text">Durante el ejercicio terminado el <strong>31 de diciembre de 2025</strong>, la <strong>CORPORACION MEDALLO DEPORTES</strong> no registró ingresos ni egresos. Todos los rubros del Estado del Resultado Integral presentan valor <strong>cero ($0)</strong>: ingresos por donaciones, costos de la actividad, gastos de administración, gastos financieros, ingresos financieros y excedente neto.</p>
+          </div>
+
+          <!-- Estado de Cambios en el Patrimonio -->
+          <p style="font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Estado de Cambios en el Patrimonio</p>
+          <div style="overflow-x:auto;margin-bottom:32px;">
+            <table style="width:100%;border-collapse:collapse;font-size:14px;min-width:480px;">
+              <thead>
+                <tr style="background:var(--navy);">
+                  <th style="padding:12px 16px;text-align:left;color:#fff;font-weight:700;">Concepto</th>
+                  <th style="padding:12px 16px;text-align:right;color:var(--gold);font-weight:700;">2025</th>
+                  <th style="padding:12px 16px;text-align:right;color:var(--gold);font-weight:700;">2024</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="background:#e8ebf5;"><td colspan="3" style="padding:10px 16px;font-weight:700;color:var(--navy);">Capital Social</td></tr>
+                <tr style="background:#fff;border-bottom:1px solid #f0f0f0;"><td style="padding:10px 16px 10px 24px;color:#555;">Saldo al final del año</td><td style="padding:10px 16px;text-align:right;font-weight:600;color:var(--navy);">1.000.000</td><td style="padding:10px 16px;text-align:right;font-weight:600;color:var(--navy);">1.000.000</td></tr>
+                <tr style="background:#e8ebf5;"><td colspan="3" style="padding:10px 16px;font-weight:700;color:var(--navy);">Reservas</td></tr>
+                <tr style="background:var(--gray);border-bottom:1px solid #f0f0f0;"><td style="padding:10px 16px 10px 24px;color:#555;">Beneficio neto o excedente</td><td style="padding:10px 16px;text-align:right;color:#555;">—</td><td style="padding:10px 16px;text-align:right;color:#555;">—</td></tr>
+                <tr style="background:#e8ebf5;"><td colspan="3" style="padding:10px 16px;font-weight:700;color:var(--navy);">Resultados acumulados</td></tr>
+                <tr style="background:#fff;border-bottom:1px solid #f0f0f0;"><td style="padding:10px 16px 10px 24px;color:#555;">Resultado del Ejercicio</td><td style="padding:10px 16px;text-align:right;color:#555;">—</td><td style="padding:10px 16px;text-align:right;color:#555;">—</td></tr>
+                <tr style="background:var(--gray);border-bottom:1px solid #f0f0f0;"><td style="padding:10px 16px 10px 24px;color:#555;">ORI / Pérdidas Acumuladas</td><td style="padding:10px 16px;text-align:right;color:#555;">—</td><td style="padding:10px 16px;text-align:right;color:#555;">—</td></tr>
+                <tr style="background:var(--navy);"><td style="padding:12px 16px;font-weight:700;color:#fff;font-size:15px;">TOTAL PATRIMONIO</td><td style="padding:12px 16px;text-align:right;font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold);letter-spacing:1px;">1.000.000</td><td style="padding:12px 16px;text-align:right;font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold);letter-spacing:1px;">1.000.000</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Estado de Flujos de Efectivo -->
+          <p style="font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Estado de Flujos de Efectivo — Método Directo</p>
+          <div style="padding:20px 24px;background:var(--gray);border-left:4px solid var(--gold);border-radius:0 3px 3px 0;margin-bottom:32px;">
+            <p class="doc-text">No existieron flujos de efectivo por actividades de <strong>operación, inversión ni financiación</strong> durante el período terminado el 31 de diciembre de 2025. El efectivo al inicio y al final del período es <strong>$0</strong>.</p>
+          </div>
+
+          <!-- Políticas Contables -->
+          <p style="font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Políticas Contables y Notas Explicativas</p>
+          <p class="doc-text" style="margin-bottom:12px;">Los estados financieros han sido preparados de conformidad con las <strong>Normas Internacionales de Información Financiera para PYMEs (NIIF para PYMEs)</strong>, adoptadas en Colombia mediante el <strong>Decreto 3022 del 27 de diciembre de 2013</strong>. Las cifras están expresadas en pesos colombianos, moneda funcional de la entidad.</p>
+          <p class="doc-text" style="margin-bottom:24px;"><strong>Nota:</strong> No existen movimientos en el año, motivo por el cual se presentan todas las cifras en cero, excepto el Capital Social ($1.000.000) y las Cuentas por cobrar ($1.000.000).</p>
+
+          <!-- Transacciones con Partes Relacionadas -->
+          <p style="font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Transacciones con Partes Relacionadas</p>
+          <div class="data-grid" style="margin-bottom:24px;">
+            <div class="data-item"><p class="data-label">Ingresos recibidos (2025)</p><p class="data-value">$0 — Sin ingresos</p></div>
+            <div class="data-item"><p class="data-label">Remuneración administrador (2025)</p><p class="data-value">$0 — Sin remuneración</p></div>
+          </div>
+
+          <!-- Firma contador -->
+          <div style="margin-top:12px;padding-top:20px;border-top:1px solid #f0f0f0;">
+            <p style="font-size:13px;color:#888;margin-bottom:4px;">Cordialmente,</p>
+            <p style="font-size:14px;font-weight:700;color:var(--navy);">Marcela Arango Arenas</p>
+            <p style="font-size:13px;color:#555;">Contadora — TP 186737-T</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documento 13 -->
+      <div class="doc-card" id="doc-13">
+        <div class="doc-card-header">
+          <div class="doc-number-badge">13</div>
+          <h2 class="doc-card-title">Certificación de cumplimiento<br>de requisitos — RTE</h2>
+        </div>
+        <div class="doc-card-body">
+          <p style="font-size:13px;color:#888;margin-bottom:4px;">Numeral 13, Parágrafo 2, Art. 364-5 Estatuto Tributario</p>
+          <p class="doc-text" style="margin-bottom:20px;">El suscrito Representante Legal de la <strong>CORPORACION MEDALLO DEPORTES</strong> con NIT. <strong>901.810.224-7</strong>, dando cumplimiento a lo establecido en el numeral 13 del parágrafo 2 del artículo 364-5 del Estatuto Tributario,</p>
+          <div style="padding:8px 20px;background:var(--navy);border-radius:4px;display:inline-block;margin-bottom:20px;"><p style="font-size:14px;font-weight:700;letter-spacing:2px;color:#fff;text-transform:uppercase;">CERTIFICA</p></div>
+          <ol style="padding-left:20px;display:flex;flex-direction:column;gap:12px;margin-bottom:24px;">
+            <li class="doc-text">Que la <strong>CORPORACION MEDALLO DEPORTES</strong> es una entidad sin ánimo de lucro con NIT. <strong>901.810.224-7</strong>, de carácter privado, constituida en Cámara de Comercio de Medellín según acta del <strong>10 de enero de 2024</strong>, inscrita el <strong>08 de marzo de 2024</strong>, con el No. 697, del Libro I, ubicada en la CL 113 A 67 27, Medellín (Antioquia), teléfono 305 4595734.</li>
+            <li class="doc-text">Que la <strong>CORPORACION MEDALLO DEPORTES</strong> cumple con las disposiciones establecidas en el Estatuto Tributario y sus decretos reglamentarios, para permanecer en el <strong>Régimen Tributario Especial</strong> del impuesto sobre la Renta y Complementarios.</li>
+            <li class="doc-text">Que de acuerdo con la declaración de Renta, la <strong>CORPORACION MEDALLO DEPORTES</strong> cumplió con la obligación de presentarla por el <strong>año gravable 2025</strong> dentro de los plazos establecidos por el Gobierno Nacional.</li>
+            <li class="doc-text">Que la presente certificación se fundamenta en el contenido de los libros de contabilidad y los registros de la <strong>CORPORACION MEDALLO DEPORTES</strong> con NIT. 901.810.224-7.</li>
+          </ol>
+          <div class="data-grid">
+            <div class="data-item"><p class="data-label">Ciudad y fecha</p><p class="data-value">Medellín, 10 de julio de 2026</p></div>
+            <div class="data-item"><p class="data-label">Representante Legal</p><p class="data-value">Sara María Arboleda Castrillón — CC. 1152454918</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documento 14 -->
+      <div class="doc-card" id="doc-14">
+        <div class="doc-card-header">
+          <div class="doc-number-badge">14</div>
+          <h2 class="doc-card-title">Recursos de cooperación<br>internacional no reembolsables</h2>
+        </div>
+        <div class="doc-card-body">
+          <div style="padding:24px 28px;background:var(--gray);border-left:4px solid var(--gold);border-radius:0 3px 3px 0;">
+            <p class="doc-text">Durante el año <strong>2025</strong> la <strong>CORPORACION MEDALLO DEPORTES</strong> no recibió ni ejecutó recursos de cooperación internacional no reembolsables.</p>
+          </div>
+          <div class="data-grid" style="margin-top:24px;">
+            <div class="data-item"><p class="data-label">Período</p><p class="data-value">Año 2025</p></div>
+            <div class="data-item"><p class="data-label">Recursos recibidos</p><p class="data-value">Ninguno</p></div>
+            <div class="data-item"><p class="data-label">Recursos ejecutados</p><p class="data-value">Ninguno</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documento 15 -->
+      <div class="doc-card" id="doc-15">
+        <div class="doc-card-header">
+          <div class="doc-number-badge">15</div>
+          <h2 class="doc-card-title">Certificado de Existencia<br>y Representación Legal</h2>
+        </div>
+        <div class="doc-card-body">
+          <p style="font-size:13px;color:#888;margin-bottom:16px;">Cámara de Comercio de Medellín para Antioquia — Expedición: 25/06/2026</p>
+          <div class="data-grid" style="margin-bottom:28px;">
+            <div class="data-item"><p class="data-label">Razón social</p><p class="data-value">Corporación Medallo Deportes</p></div>
+            <div class="data-item"><p class="data-label">NIT</p><p class="data-value">901.810.224-7</p></div>
+            <div class="data-item"><p class="data-label">Inscripción No.</p><p class="data-value">21-021540-21 — 08/03/2024</p></div>
+            <div class="data-item"><p class="data-label">Grupo NIIF</p><p class="data-value">Grupo III</p></div>
+            <div class="data-item"><p class="data-label">Domicilio</p><p class="data-value">Calle 113 A # 67-27, Medellín, Antioquia</p></div>
+            <div class="data-item"><p class="data-label">Correo electrónico</p><p class="data-value">corporacionmedallo@gmail.com</p></div>
+            <div class="data-item"><p class="data-label">Teléfonos</p><p class="data-value">305 4595734 / 322 6551476 / 312 8753347</p></div>
+            <div class="data-item"><p class="data-label">Vigencia</p><p class="data-value">Hasta el 08 de marzo de 2084</p></div>
+            <div class="data-item"><p class="data-label">Último año renovado</p><p class="data-value">2026 — Renovación 31/03/2026</p></div>
+            <div class="data-item"><p class="data-label">CIIU principal</p><p class="data-value">9499 — Actividades de otras asociaciones ncp</p></div>
+            <div class="data-item"><p class="data-label">Tamaño de empresa</p><p class="data-value">Microempresa</p></div>
+            <div class="data-item"><p class="data-label">Patrimonio</p><p class="data-value">$1.000.000,00</p></div>
+          </div>
+          <p style="font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy);margin-bottom:16px;">Entidad supervisora</p>
+          <p class="doc-text" style="margin-bottom:24px;">Ministerio del deporte</p>
+          <p style="font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy);margin-bottom:12px;">Representantes Legales</p>
+          <table style="width:100%;border-collapse:collapse;font-size:14px;margin-bottom:28px;">
+            <thead>
+              <tr style="background:var(--navy);">
+                <th style="padding:12px 16px;text-align:left;color:#fff;font-weight:700;">Cargo</th>
+                <th style="padding:12px 16px;text-align:left;color:#fff;font-weight:700;">Nombre</th>
+                <th style="padding:12px 16px;text-align:left;color:#fff;font-weight:700;">Identificación</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#fff;border-bottom:1px solid #f0f0f0;">
+                <td style="padding:12px 16px;color:#555;">Representante Legal Principal</td>
+                <td style="padding:12px 16px;font-weight:600;color:var(--navy);">Sara María Arboleda Castrillón</td>
+                <td style="padding:12px 16px;color:#555;">C.C. 1.152.454.918</td>
+              </tr>
+              <tr style="background:var(--gray);">
+                <td style="padding:12px 16px;color:#555;">Representante Legal Suplente</td>
+                <td style="padding:12px 16px;font-weight:600;color:var(--navy);">Angie Paola Mosquera Castro</td>
+                <td style="padding:12px 16px;color:#555;">C.C. 1.090.487.711</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy);margin-bottom:12px;">Junta Directiva</p>
+          <p style="font-size:12px;color:#888;margin-bottom:12px;">Designada por Acta del 10 de enero de 2024, inscrita el 08/03/2024 — No. 697, Libro I</p>
+          <table style="width:100%;border-collapse:collapse;font-size:14px;">
+            <thead>
+              <tr style="background:var(--navy);">
+                <th style="padding:12px 16px;text-align:left;color:#fff;font-weight:700;">Nombre</th>
+                <th style="padding:12px 16px;text-align:left;color:#fff;font-weight:700;">Identificación</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#fff;border-bottom:1px solid #f0f0f0;"><td style="padding:12px 16px;font-weight:600;color:var(--navy);">Sara María Arboleda Castrillón</td><td style="padding:12px 16px;color:#555;">C.C. 1.152.454.918</td></tr>
+              <tr style="background:var(--gray);border-bottom:1px solid #f0f0f0;"><td style="padding:12px 16px;font-weight:600;color:var(--navy);">Angie Paola Mosquera Castro</td><td style="padding:12px 16px;color:#555;">C.C. 1.090.487.711</td></tr>
+              <tr style="background:#fff;border-bottom:1px solid #f0f0f0;"><td style="padding:12px 16px;font-weight:600;color:var(--navy);">Valeria Álvarez Rueda</td><td style="padding:12px 16px;color:#555;">C.C. 1.017.269.396</td></tr>
+              <tr style="background:var(--gray);border-bottom:1px solid #f0f0f0;"><td style="padding:12px 16px;font-weight:600;color:var(--navy);">Paola Andrea Garces Escobar</td><td style="padding:12px 16px;color:#555;">C.C. 32.243.247</td></tr>
+              <tr style="background:#fff;"><td style="padding:12px 16px;font-weight:600;color:var(--navy);">Angie Paola Giraldo Duque</td><td style="padding:12px 16px;color:#555;">C.C. 1.007.382.017</td></tr>
+            </tbody>
+          </table>
+          <div style="margin-top:20px;padding:14px 18px;background:var(--gray);border-radius:4px;">
+            <p style="font-size:12px;color:#888;">Código de verificación: <strong>cbQibaAkydBjbbpi</strong> — Verificable en www.certificadoscamara.com durante 60 días desde su expedición.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documento 16 -->
+      <div class="doc-card" id="doc-16">
+        <div class="doc-card-header">
+          <div class="doc-number-badge">16</div>
+          <h2 class="doc-card-title">Acta de Asamblea No. 002<br><span style="font-size:16px;opacity:.7;font-family:'Manrope',sans-serif;font-weight:600;letter-spacing:0;">Reunión Ordinaria — 16 de marzo de 2026</span></h2>
+        </div>
+        <div class="doc-card-body">
+          <!-- Encabezado -->
+          <div class="data-grid" style="margin-bottom:24px;">
+            <div class="data-item"><p class="data-label">Entidad</p><p class="data-value">Corporación Medallo Deportes</p></div>
+            <div class="data-item"><p class="data-label">Tipo de reunión</p><p class="data-value">Ordinaria de Asamblea General</p></div>
+            <div class="data-item"><p class="data-label">Fecha y hora</p><p class="data-value">16 de marzo de 2026 — 10:00 AM</p></div>
+            <div class="data-item"><p class="data-label">Ciudad</p><p class="data-value">Medellín</p></div>
+            <div class="data-item"><p class="data-label">Presidente de sesión</p><p class="data-value">Paola Andrea Garces Escobar</p></div>
+            <div class="data-item"><p class="data-label">Secretaria</p><p class="data-value">Sara María Arboleda Castrillón</p></div>
+          </div>
+          <!-- Asistentes -->
+          <p style="font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy);margin-bottom:12px;">Miembros presentes (100% del quórum)</p>
+          <table style="width:100%;border-collapse:collapse;font-size:14px;margin-bottom:28px;">
+            <thead>
+              <tr style="background:var(--navy);">
+                <th style="padding:12px 16px;text-align:left;color:#fff;font-weight:700;">Nombre</th>
+                <th style="padding:12px 16px;text-align:left;color:#fff;font-weight:700;">Documento</th>
+                <th style="padding:12px 16px;text-align:center;color:#fff;font-weight:700;">Representación</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#fff;border-bottom:1px solid #f0f0f0;"><td style="padding:12px 16px;font-weight:600;color:var(--navy);">Sara María Arboleda Castrillón</td><td style="padding:12px 16px;color:#555;">c.c 1152454918</td><td style="padding:12px 16px;text-align:center;"><span style="background:var(--navy);color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;padding:3px 10px;border-radius:20px;">Presente</span></td></tr>
+              <tr style="background:var(--gray);border-bottom:1px solid #f0f0f0;"><td style="padding:12px 16px;font-weight:600;color:var(--navy);">Paola Andrea Garces Escobar</td><td style="padding:12px 16px;color:#555;">c.c 32243247</td><td style="padding:12px 16px;text-align:center;"><span style="background:var(--navy);color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;padding:3px 10px;border-radius:20px;">Presente</span></td></tr>
+              <tr style="background:#fff;border-bottom:1px solid #f0f0f0;"><td style="padding:12px 16px;font-weight:600;color:var(--navy);">Angie Paola Mosquera Castro</td><td style="padding:12px 16px;color:#555;">c.c 1090487711</td><td style="padding:12px 16px;text-align:center;"><span style="background:var(--navy);color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;padding:3px 10px;border-radius:20px;">Presente</span></td></tr>
+              <tr style="background:var(--gray);border-bottom:1px solid #f0f0f0;"><td style="padding:12px 16px;font-weight:600;color:var(--navy);">Angie Paola Giraldo Duque</td><td style="padding:12px 16px;color:#555;">c.c 1007382017</td><td style="padding:12px 16px;text-align:center;"><span style="background:var(--navy);color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;padding:3px 10px;border-radius:20px;">Presente</span></td></tr>
+              <tr style="background:#fff;"><td style="padding:12px 16px;font-weight:600;color:var(--navy);">Valeria Álvarez Rueda</td><td style="padding:12px 16px;color:#555;">c.c 1017269396</td><td style="padding:12px 16px;text-align:center;"><span style="background:var(--navy);color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;padding:3px 10px;border-radius:20px;">Presente</span></td></tr>
+            </tbody>
+          </table>
+          <!-- Orden del día y resoluciones -->
+          <p style="font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy);margin-bottom:16px;">Orden del día y resoluciones</p>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:24px;">
+            <div style="padding:16px 20px;background:var(--gray);border-radius:4px;border-left:4px solid var(--navy);">
+              <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:6px;">Punto 1 — Designación de presidente y secretaria</p>
+              <p class="doc-text">Se designó como presidente a <strong>Paola Andrea Garces Escobar</strong> y como secretaria a <strong>Sara María Arboleda Castrillón</strong>.</p>
+            </div>
+            <div style="padding:16px 20px;background:var(--gray);border-radius:4px;border-left:4px solid var(--navy);">
+              <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:6px;">Punto 2 — Verificación del quórum</p>
+              <p class="doc-text">El secretario verificó la presencia del <strong>100% de los miembros</strong>, existiendo quórum para deliberar y decidir válidamente.</p>
+            </div>
+            <div style="padding:16px 20px;background:var(--gray);border-radius:4px;border-left:4px solid var(--navy);">
+              <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:6px;">Punto 3 — Informe del presidente de Junta</p>
+              <p class="doc-text">El presidente manifestó la necesidad de dar inicio al objeto meritorio de la Corporación, presentando posibles alianzas y donaciones con entidades nacionales e internacionales.</p>
+            </div>
+            <div style="padding:16px 20px;background:var(--gray);border-radius:4px;border-left:4px solid var(--navy);">
+              <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:6px;">Punto 4 — Estados Financieros a diciembre de 2025</p>
+              <p class="doc-text">La contadora presentó los estados financieros bajo normas NIIF. Teniendo en cuenta que no hubo movimiento durante el año, no existe beneficio neto a reinvertir. Se aprobaron por <strong>unanimidad (100%)</strong>.</p>
+            </div>
+            <div style="padding:16px 20px;background:var(--gray);border-radius:4px;border-left:4px solid var(--navy);">
+              <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:6px;">Punto 5 — Autorización permanencia en RTE</p>
+              <p class="doc-text">Se autorizó al representante legal para realizar el trámite de <strong>SOLICITUD al Régimen Tributario Especial</strong>. Aprobado por unanimidad.</p>
+            </div>
+          </div>
+          <div class="data-grid">
+            <div class="data-item"><p class="data-label">Cierre de reunión</p><p class="data-value">16 de marzo de 2026 — 11:00 AM</p></div>
+            <div class="data-item"><p class="data-label">Presidente</p><p class="data-value">Paola Andrea Garces Escobar — CC. 32243247</p></div>
+            <div class="data-item"><p class="data-label">Secretaria</p><p class="data-value">Sara María Arboleda Castrillón — CC. 1152454918</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documento 17 -->
+      <div class="doc-card" id="doc-17">
+        <div class="doc-card-header">
+          <div class="doc-number-badge">17</div>
+          <h2 class="doc-card-title">Estatutos de la Corporación<br><span style="font-size:16px;opacity:.7;font-family:'Manrope',sans-serif;font-weight:600;letter-spacing:0;">Corporación Medallo Deportes</span></h2>
+        </div>
+        <div class="doc-card-body">
+          <div class="data-grid" style="margin-bottom:28px;">
+            <div class="data-item"><p class="data-label">Denominación</p><p class="data-value">Corporación Medallo Deportes</p></div>
+            <div class="data-item"><p class="data-label">Naturaleza</p><p class="data-value">Sin ánimo de lucro — Privada — Civil</p></div>
+            <div class="data-item"><p class="data-label">Domicilio</p><p class="data-value">Medellín, Colombia</p></div>
+            <div class="data-item"><p class="data-label">Vigencia</p><p class="data-value">60 años desde constitución</p></div>
+            <div class="data-item"><p class="data-label">Firmado por</p><p class="data-value">Sara María Arboleda Castrillón — Presidenta</p></div>
+          </div>
+
+          <p style="font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy);margin-bottom:16px;">Capítulos</p>
+          <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
+            <div style="padding:14px 18px;background:var(--gray);border-radius:4px;border-left:3px solid var(--gold);">
+              <p style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px;">Capítulo I — Denominación, Naturaleza, Domicilio, Vigencia y Objeto</p>
+              <p style="font-size:13px;color:#666;">Arts. 1–4. Define la naturaleza de la Corporación, su domicilio en Medellín, una vigencia de 60 años, y su objeto: contribución social a través del deporte, recreación, prevención de adicciones y desarrollo comunitario.</p>
+            </div>
+            <div style="padding:14px 18px;background:var(--gray);border-radius:4px;border-left:3px solid var(--gold);">
+              <p style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px;">Capítulo II — Miembros de la Corporación</p>
+              <p style="font-size:13px;color:#666;">Arts. 5–11. Clases de miembros (fundadores y adherentes), requisitos de ingreso, causales de pérdida de calidad, derechos y deberes.</p>
+            </div>
+            <div style="padding:14px 18px;background:var(--gray);border-radius:4px;border-left:3px solid var(--gold);">
+              <p style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px;">Capítulo III — Organización y Dirección</p>
+              <p style="font-size:13px;color:#666;">Arts. 12–38. Estructura orgánica: Asamblea General, Junta Directiva (5 miembros — presidente, vicepresidente, secretario y 2 vocales), Director General y Representante Legal con su suplente.</p>
+            </div>
+            <div style="padding:14px 18px;background:var(--gray);border-radius:4px;border-left:3px solid var(--gold);">
+              <p style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px;">Capítulo IV — Patrimonio</p>
+              <p style="font-size:13px;color:#666;">Art. 39. El patrimonio está constituido por bienes, excedentes de donaciones y rendimientos. No es objeto de reparto entre miembros ni al momento de disolución; el remanente se dona conforme a la ley.</p>
+            </div>
+            <div style="padding:14px 18px;background:var(--gray);border-radius:4px;border-left:3px solid var(--gold);">
+              <p style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px;">Capítulo V — Disolución, Liquidación y Distribución del Patrimonio</p>
+              <p style="font-size:13px;color:#666;">Arts. 40–37. La disolución requiere voto favorable del 70% de la Asamblea. El patrimonio remanente se entrega a otra entidad sin ánimo de lucro domiciliada en Medellín con actividad meritoria similar.</p>
+            </div>
+            <div style="padding:14px 18px;background:var(--gray);border-radius:4px;border-left:3px solid var(--gold);">
+              <p style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px;">Capítulo VI — Disposiciones Varias</p>
+              <p style="font-size:13px;color:#666;">Art. 41. Las controversias se resuelven en primera instancia por conciliación extrajudicial en la Cámara de Comercio de Medellín; en caso de fracaso, mediante Tribunal de Arbitramento.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documento 18 -->
+      <div class="doc-card" id="doc-18">
+        <div class="doc-card-header">
+          <div class="doc-number-badge">18</div>
+          <h2 class="doc-card-title">Certificación de antecedentes judiciales<br>y caducidad de contratos</h2>
+        </div>
+        <div class="doc-card-body">
+          <p style="font-size:13px;color:#888;margin-bottom:16px;">Numeral 3, Art. 364-3 E.T. · Numeral 5, Art. 1.2.1.5.1.8 Decreto 2150/2017</p>
+          <p class="doc-text" style="margin-bottom:20px;"><strong>SARA MARIA ARBOLEDA CASTRILLON</strong>, identificada con cédula de ciudadanía 1.152.454.918, Representante Legal de la <strong>CORPORACIÓN MEDALLO DEPORTES</strong> con NIT. 901810224-7,</p>
+          <div style="padding:8px 20px;background:var(--navy);border-radius:4px;display:inline-block;margin-bottom:20px;"><p style="font-size:14px;font-weight:700;letter-spacing:2px;color:#fff;text-transform:uppercase;">CERTIFICA</p></div>
+          <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:24px;">
+            <div style="padding:16px 20px;background:var(--gray);border-left:4px solid var(--gold);border-radius:0 3px 3px 0;">
+              <p class="doc-text">Que el suscrito Representante Legal, los miembros de los órganos de dirección, ni sus fundadores, en ejercicio de sus funciones y actividades ordinarias <strong>han sido declarados responsables penalmente</strong> por ningún delito contra la administración pública, el orden económico social ni contra el patrimonio económico, haciendo uso del nombre de la entidad para la comisión de delitos.</p>
+            </div>
+            <div style="padding:16px 20px;background:var(--gray);border-left:4px solid var(--gold);border-radius:0 3px 3px 0;">
+              <p class="doc-text">Así mismo certifico que el suscrito, los miembros de los órganos de dirección, ni sus fundadores, <strong>han sido sancionados con la declaración de caducidad</strong> por contratos celebrados con las entidades públicas, haciendo uso del nombre de la entidad.</p>
+            </div>
+          </div>
+          <p style="font-size:13px;color:#888;margin-bottom:16px;">Los certificados de antecedentes judiciales pueden consultarse en: <strong>antecedentes.policia.gov.co:7005/WebJudicial/</strong></p>
+          <div class="data-grid">
+            <div class="data-item"><p class="data-label">Ciudad y fecha</p><p class="data-value">Medellín, 10 de julio de 2026</p></div>
+            <div class="data-item"><p class="data-label">Destinatario</p><p class="data-value">DIAN — Dirección de Impuestos y Aduanas Nacionales</p></div>
+            <div class="data-item"><p class="data-label">Representante Legal</p><p class="data-value">Sara María Arboleda Castrillón — CC. 1152454918</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documento 19 -->
+      <div class="doc-card" id="doc-19">
+        <div class="doc-card-header">
+          <div class="doc-number-badge">19</div>
+          <h2 class="doc-card-title">Certificación de pagos<br>a directivos — Año 2025</h2>
+        </div>
+        <div class="doc-card-body">
+          <p style="font-size:13px;color:#888;margin-bottom:16px;">Numerales 5 y 6, Parágrafo 2, Art. 364-5 Estatuto Tributario</p>
+          <p class="doc-text" style="margin-bottom:20px;"><strong>SARA MARIA ARBOLEDA CASTRILLON</strong>, Representante Legal de <strong>CORPORACIÓN MEDALLO DEPORTES</strong> (NIT. 901810224-7), certifica que:</p>
+          <ol style="padding-left:20px;display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
+            <li class="doc-text">La <strong>CORPORACIÓN MEDALLO DEPORTES</strong> durante el año 2025 <strong>no obtuvo ingresos brutos superiores a 3.500 UVT</strong>.</li>
+            <li class="doc-text">Las personas relacionadas a continuación ostentan cargos directivos y gerenciales:</li>
+          </ol>
+          <div style="overflow-x:auto;margin-bottom:20px;">
+            <table style="width:100%;border-collapse:collapse;font-size:13px;min-width:560px;">
+              <thead>
+                <tr style="background:var(--navy);">
+                  <th style="padding:10px 12px;text-align:left;color:#fff;font-weight:700;">Nombre</th>
+                  <th style="padding:10px 12px;text-align:left;color:#fff;font-weight:700;">Identificación</th>
+                  <th style="padding:10px 12px;text-align:left;color:#fff;font-weight:700;">Cargo</th>
+                  <th style="padding:10px 12px;text-align:left;color:#fff;font-weight:700;">Concepto</th>
+                  <th style="padding:10px 12px;text-align:right;color:var(--gold);font-weight:700;">Remuneración</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="background:#fff;border-bottom:1px solid #f0f0f0;">
+                  <td style="padding:10px 12px;font-weight:600;color:var(--navy);">Sara María Arboleda Castrillón</td>
+                  <td style="padding:10px 12px;color:#555;">CC 1152454918</td>
+                  <td style="padding:10px 12px;color:#555;">Representante Principal</td>
+                  <td style="padding:10px 12px;color:#555;">Honorarios</td>
+                  <td style="padding:10px 12px;text-align:right;font-weight:700;color:var(--navy);">$0</td>
+                </tr>
+                <tr style="background:var(--gray);">
+                  <td style="padding:10px 12px;font-weight:600;color:var(--navy);">Angie Paola Mosquera Castro</td>
+                  <td style="padding:10px 12px;color:#555;">CC 1090487711</td>
+                  <td style="padding:10px 12px;color:#555;">Representante Suplente</td>
+                  <td style="padding:10px 12px;color:#555;">Honorarios</td>
+                  <td style="padding:10px 12px;text-align:right;font-weight:700;color:var(--navy);">$0</td>
+                </tr>
+                <tr style="background:var(--navy);">
+                  <td colspan="4" style="padding:10px 12px;font-weight:700;color:#fff;">Total Remuneración Cargos Directivos</td>
+                  <td style="padding:10px 12px;text-align:right;font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);letter-spacing:1px;">$0</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="padding:16px 20px;background:var(--gray);border-left:4px solid var(--gold);border-radius:0 3px 3px 0;margin-bottom:24px;">
+            <p class="doc-text">Que las personas indicadas <strong>no se les pagó ninguna remuneración</strong> durante el año 2025.</p>
+          </div>
+          <div class="data-grid">
+            <div class="data-item"><p class="data-label">Ciudad y fecha</p><p class="data-value">Medellín, 10 de julio de 2026</p></div>
+            <div class="data-item"><p class="data-label">Representante Legal</p><p class="data-value">Sara María Arboleda Castrillón — CC. 1152454918</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documento 20 -->
+      <div class="doc-card" id="doc-20">
+        <div class="doc-card-header">
+          <div class="doc-number-badge">20</div>
+          <h2 class="doc-card-title">Memoria Económica</h2>
+        </div>
+        <div class="doc-card-body">
+          <p style="font-size:13px;color:#888;margin-bottom:16px;">Art. 356-3 Estatuto Tributario</p>
+          <div style="padding:24px 28px;background:var(--gray);border-left:4px solid var(--gold);border-radius:0 3px 3px 0;">
+            <p class="doc-text">En concordancia con el artículo 356-3 del Estatuto Tributario, la <strong>CORPORACIÓN MEDALLO DEPORTES</strong> no registró memoria económica por no superar el tope de ingresos de <strong>160.000 UVT</strong>.</p>
+          </div>
+          <div class="data-grid" style="margin-top:24px;">
+            <div class="data-item"><p class="data-label">Marco legal</p><p class="data-value">Art. 356-3 Estatuto Tributario</p></div>
+            <div class="data-item"><p class="data-label">Período</p><p class="data-value">Año 2025</p></div>
+            <div class="data-item"><p class="data-label">Tope exigible</p><p class="data-value">160.000 UVT</p></div>
+            <div class="data-item"><p class="data-label">Obligación</p><p class="data-value">No aplica — No supera el tope</p></div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="ft-bottom">
+      <img src="../assets/logo-dorado.png" alt="Medallo FC" class="ft-logo-sm">
+      <p class="ft-copy">© 2026 Corporación Medallo Deportes — NIT 901.810.224-7. Todos los derechos reservados.</p>
+      <a href="../index.html" class="ft-back">← Volver al inicio</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Inyectar botón de descarga en cada tarjeta
+  document.querySelectorAll('.doc-card').forEach(card => {
+    const num = card.id.replace('doc-', '').padStart(2, '0');
+    const header = card.querySelector('.doc-card-header');
+    if (!header) return;
+    const a = document.createElement('a');
+    a.href = `./docs/doc-${num}.pdf`;
+    a.download = '';
+    a.className = 'doc-download-btn';
+    a.title = 'Descargar PDF';
+    a.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>PDF';
+    header.appendChild(a);
+  });
+
+  // Highlight activo en sidebar al hacer scroll
+  const sections = document.querySelectorAll('[id^="doc-"]');
+  const links = document.querySelectorAll('.doc-list a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.doc-list a[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

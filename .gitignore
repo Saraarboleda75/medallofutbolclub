@@ -1,0 +1,10 @@
+# Fotos originales (HEIC/MOV) — no se suben al repo
+cp/medallo/drive-download-20260729T152510Z-1-001/
+cp/medallo/drive-download-20260729T152510Z-1-001.zip
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db

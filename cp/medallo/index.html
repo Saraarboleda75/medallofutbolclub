@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medallo Fútbol Club — Nacidas en Medallo. Preparadas para el mundo.</title>
+  <meta name="description" content="Club oficial de fútbol femenino de Medellín. Formamos jugadoras, líderes y grandes personas a través del deporte.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ── RESET ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:       #1B1F5E;   /* azul navy profundo — color principal */
+      --navy-dark:  #0D0F2A;   /* navy oscuro para fondos y hero */
+      --navy-mid:   #151840;   /* navy medio para hover */
+      --gold:       #C89B2A;   /* dorado — color acento */
+      --gold-light: #E0B84A;   /* dorado claro para hover */
+      --dark:       #111111;
+      --carbon:     #131628;   /* navy tintado */
+      --gray:       #F5F5F5;
+      --white:      #FFFFFF;
+      --bebas:      'Bebas Neue', sans-serif;
+      --body:       'Manrope', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--body); color: var(--dark); background: var(--white); overflow-x: hidden; }
+    img  { max-width: 100%; height: auto; display: block; }
+    a    { text-decoration: none; color: inherit; }
+
+    /* ── UTILITIES ──────────────────────────────── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .pad       { padding: 100px 0; }
+    .tag       { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .h2        { font-family: var(--bebas); font-size: clamp(40px, 6vw, 72px); line-height: 1; letter-spacing: 1px; }
+    .lead      { font-size: 17px; line-height: 1.8; color: #555; max-width: 540px; }
+    .btn       { display: inline-flex; align-items: center; gap: 8px; padding: 15px 34px; font-family: var(--body); font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border-radius: 3px; border: 2px solid transparent; cursor: pointer; transition: all .25s; }
+    .btn-gold  { background: var(--gold); color: #fff; }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,155,42,.35); }
+    .btn-outline { border-color: #fff; color: #fff; }
+    .btn-outline:hover { background: #fff; color: var(--navy-dark); transform: translateY(-2px); }
+    .btn-dark  { border-color: var(--navy); color: var(--navy); }
+    .btn-dark:hover { background: var(--navy); color: #fff; transform: translateY(-2px); }
+
+    /* ── FADE-UP ────────────────────────────────── */
+    .fu { opacity: 0; transform: translateY(36px); transition: opacity .7s ease, transform .7s ease; }
+    .fu.on { opacity: 1; transform: none; }
+    .d1 { transition-delay: .1s; } .d2 { transition-delay: .2s; }
+    .d3 { transition-delay: .3s; } .d4 { transition-delay: .4s; }
+    .d5 { transition-delay: .5s; } .d6 { transition-delay: .6s; }
+
+    /* ── NAV ────────────────────────────────────── */
+    #nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 0; transition: all .3s; }
+    #nav.scrolled { background: rgba(13,15,42,.96); padding: 12px 0; backdrop-filter: blur(12px); box-shadow: 0 2px 20px rgba(0,0,0,.4); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo-img { height: 52px; width: auto; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.75); transition: color .2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-btn { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; background: var(--gold); color: #fff; padding: 10px 22px; border-radius: 3px; transition: all .2s; }
+    .nav-btn:hover { background: var(--gold-light); box-shadow: 0 4px 16px rgba(200,155,42,.3); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; }
+
+    /* ── HERO ───────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      background: var(--navy-dark);
+      background-image: url('./assets/hero.jpg'); background-size: cover; background-position: center top;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(120deg, rgba(13,15,42,.92) 0%, rgba(27,31,94,.65) 60%, rgba(13,15,42,.5) 100%);
+    }
+    .hero-glow {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 75% 40%, rgba(200,155,42,.18) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 80%, rgba(27,31,94,.5) 0%, transparent 50%);
+    }
+    /* Patrón hexagonal sutil (guiño al balón) */
+    .hero-pattern {
+      position: absolute; inset: 0; opacity: .04;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='52' viewBox='0 0 60 52' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='30,2 58,17 58,35 30,50 2,35 2,17' fill='none' stroke='%23ffffff' stroke-width='1'/%3E%3C/svg%3E");
+      background-size: 60px 52px;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 820px; }
+    .hero-eye { font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .hero-h1 { font-family: var(--bebas); font-size: clamp(64px, 10vw, 118px); line-height: .95; color: #fff; margin-bottom: 28px; }
+    .hero-h1 .acc { color: var(--gold); }
+    .hero-sub { font-size: 17px; line-height: 1.8; color: rgba(255,255,255,.65); max-width: 560px; margin-bottom: 40px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-scroll {
+      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: rgba(255,255,255,.3); font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+      animation: bob 2s ease-in-out infinite;
+    }
+    .hero-scroll::after { content: ''; display: block; width: 1px; height: 44px; background: rgba(255,255,255,.15); }
+    @keyframes bob { 0%,100%{ transform: translateX(-50%) translateY(0); } 50%{ transform: translateX(-50%) translateY(7px); } }
+
+    /* ── PHRASE ─────────────────────────────────── */
+    .phrase { background: var(--navy); padding: 56px 0; text-align: center; position: relative; overflow: hidden; }
+    .phrase::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(200,155,42,.12) 0%, transparent 70%); }
+    .phrase p { font-family: var(--bebas); font-size: clamp(26px, 4vw, 48px); color: #fff; line-height: 1.3; position: relative; }
+    .phrase p span { color: var(--gold); }
+
+    /* ── ABOUT ──────────────────────────────────── */
+    #about .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-img { position: relative; }
+    .about-img .ph {
+      width: 100%; aspect-ratio: 4/5;
+      background-image: url('./assets/equipo.jpg'); background-size: cover; background-position: center;
+      border-radius: 2px;
+    }
+    .about-img .gold-sq { position: absolute; bottom: -20px; right: -20px; width: 110px; height: 110px; background: var(--gold); z-index: -1; }
+    .about-body { display: flex; flex-direction: column; gap: 20px; }
+
+    /* ── VALUES ─────────────────────────────────── */
+    #valores { background: var(--gray); }
+    .sec-head { text-align: center; margin-bottom: 56px; }
+    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .val-card { background: #fff; padding: 32px 26px; border-radius: 3px; border-bottom: 3px solid transparent; transition: all .3s; }
+    .val-card:hover { border-bottom-color: var(--gold); transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,.07); }
+    .val-icon { margin-bottom: 18px; width: 44px; height: 44px; background: rgba(200,155,42,.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+    .val-icon svg { width: 22px; height: 22px; stroke: var(--gold); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .val-name { font-family: var(--bebas); font-size: 24px; letter-spacing: 1px; margin-bottom: 8px; }
+    .val-text { font-size: 14px; line-height: 1.7; color: #666; }
+
+    /* ── POR QUÉ ────────────────────────────────── */
+    #porque { background: var(--navy-dark); }
+    .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .pq-card { padding: 26px 18px; border: 1px solid rgba(255,255,255,.07); border-radius: 3px; transition: all .3s; }
+    .pq-card:hover { border-color: var(--gold); background: rgba(200,155,42,.06); transform: translateY(-4px); }
+    .pq-icon { margin-bottom: 14px; width: 40px; height: 40px; background: rgba(200,155,42,.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .pq-icon svg { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .pq-text { font-size: 13px; font-weight: 600; line-height: 1.5; color: rgba(255,255,255,.8); }
+
+    /* ── GALLERY ────────────────────────────────── */
+    #galeria .gal-head { text-align: center; margin-bottom: 56px; }
+    .gal-head .lead { margin: 14px auto 0; text-align: center; }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 280px 280px;
+      gap: 10px;
+    }
+    .g-item {
+      border-radius: 2px; overflow: hidden; position: relative;
+      background-size: cover; background-position: center;
+      background-color: var(--navy-dark);
+      transition: transform .3s;
+    }
+    .g-item:hover { transform: scale(.985); }
+    .g-item:first-child { grid-row: span 2; }
+    .gallery .g-item:nth-child(1) { background-image: url('./assets/gallery-1.jpg'); }
+    .gallery .g-item:nth-child(2) { background-image: url('./assets/gallery-2.jpg'); }
+    .gallery .g-item:nth-child(3) { background-image: url('./assets/gallery-3.jpg'); }
+    .gallery .g-item:nth-child(4) { background-image: url('./assets/gallery-4.jpg'); }
+    .gallery .g-item:nth-child(5) { background-image: url('./assets/gallery-5.jpg'); }
+    .g-label { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.12); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+
+    /* ── HORARIOS ───────────────────────────────── */
+    #horarios { background: var(--gray); }
+    .hor-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-bottom: 48px; }
+    .hor-card { background: #fff; border-radius: 3px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,.06); }
+    .hor-head { background: var(--navy); padding: 18px 22px; position: relative; overflow: hidden; }
+    .hor-head::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 4px; background: var(--gold); }
+    .hor-sede { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .hor-name { font-family: var(--bebas); font-size: 20px; letter-spacing: 1px; color: #fff; }
+    .hor-slots { padding: 18px 22px; display: flex; flex-direction: column; gap: 10px; }
+    .slot { display: flex; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid #f0f0f0; }
+    .slot:last-child { border-bottom: none; padding-bottom: 0; }
+    .slot-d { font-size: 13px; font-weight: 700; }
+    .slot-h { font-size: 13px; font-weight: 600; color: var(--navy); }
+    .hor-cta { background: #fff; border-radius: 3px; padding: 44px; text-align: center; }
+    .hor-cta p { font-size: 15px; color: #666; margin-bottom: 22px; }
+
+    /* ── CATEGORÍAS ─────────────────────────────── */
+    #categorias { background: #fff; }
+    .cat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+    .cat-card { text-align: center; padding: 38px 20px; border: 1px solid #eee; border-radius: 3px; transition: all .3s; }
+    .cat-card:hover { border-color: var(--gold); box-shadow: 0 8px 28px rgba(200,155,42,.15); transform: translateY(-4px); }
+    .cat-icon { margin-bottom: 18px; width: 60px; height: 60px; background: rgba(27,31,94,.07); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-left: auto; margin-right: auto; }
+    .cat-icon svg { width: 28px; height: 28px; stroke: var(--navy); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .cat-card:hover .cat-icon { background: rgba(200,155,42,.12); }
+    .cat-card:hover .cat-icon svg { stroke: var(--gold); }
+    .cat-name { font-family: var(--bebas); font-size: 26px; letter-spacing: 1px; margin-bottom: 6px; }
+    .cat-age  { font-size: 12px; font-weight: 700; color: var(--gold); letter-spacing: 1px; }
+
+    /* ── PRECIOS ────────────────────────────────── */
+    #precios { background: var(--navy-dark); }
+    .pr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; max-width: 780px; margin: 0 auto 28px; }
+    .pr-card { padding: 36px 32px; border: 1px solid rgba(255,255,255,.09); border-radius: 3px; transition: border-color .3s; }
+    .pr-card:hover { border-color: var(--gold); background: rgba(200,155,42,.04); }
+    .pr-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+    .pr-row { display: flex; justify-content: space-between; align-items: baseline; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.05); }
+    .pr-row:last-child { border-bottom: none; }
+    .pr-concepto { font-size: 13px; color: rgba(255,255,255,.55); }
+    .pr-valor { font-family: var(--bebas); font-size: 28px; color: #fff; letter-spacing: 1px; }
+    .pr-incl { max-width: 780px; margin: 0 auto 44px; padding: 24px 32px; border: 1px solid rgba(255,255,255,.06); border-radius: 3px; }
+    .pr-incl-title { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .pr-incl ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .pr-incl li { font-size: 14px; color: rgba(255,255,255,.65); display: flex; align-items: center; gap: 10px; }
+    .pr-incl li::before { content: '✓'; color: var(--gold); font-weight: 700; }
+    .pr-cta { text-align: center; }
+
+    /* ── TESTIMONIOS ────────────────────────────── */
+    #testimonios { background: var(--carbon); }
+    .testi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .t-card { padding: 32px; border: 1px solid rgba(255,255,255,.06); border-radius: 3px; transition: border-color .3s; }
+    .t-card:hover { border-color: var(--gold); }
+    .t-q { font-family: Georgia, serif; font-size: 48px; color: var(--gold); line-height: 1; margin-bottom: 12px; }
+    .t-text { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,.7); font-style: italic; margin-bottom: 24px; }
+    .t-author { display: flex; align-items: center; gap: 12px; }
+    .t-avatar { width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), var(--navy-mid)); border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; font-family: var(--bebas); font-size: 20px; color: var(--gold); flex-shrink: 0; }
+    .t-name { font-size: 14px; font-weight: 700; color: #fff; }
+    .t-role { font-size: 12px; color: rgba(255,255,255,.35); margin-top: 2px; }
+
+    /* ── IMPACTO ────────────────────────────────── */
+    #impacto {
+      background: var(--navy);
+      background-image: url('./assets/medellin-aerea.jpg'); background-size: cover; background-position: center;
+      position: relative;
+    }
+    .imp-overlay { position: absolute; inset: 0; background: rgba(13,15,42,.88); }
+    .imp-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at 40% 50%, rgba(200,155,42,.14) 0%, transparent 60%); }
+    .imp-inner { position: relative; z-index: 2; text-align: center; }
+    .imp-inner .lead { margin: 14px auto 64px; color: rgba(255,255,255,.55); }
+    .stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 36px; }
+    .stat { text-align: center; }
+    .stat-n { font-family: var(--bebas); font-size: 68px; color: #fff; line-height: 1; margin-bottom: 6px; }
+    .stat-n .acc { color: var(--gold); }
+    .stat-ico { margin-bottom: 10px; display: flex; justify-content: center; }
+    .stat-ico svg { width: 40px; height: 40px; stroke: var(--gold); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; opacity: .85; }
+    .stat-lbl { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.45); line-height: 1.5; }
+
+    /* ── CTA FINAL ──────────────────────────────── */
+    #cta {
+      min-height: 72vh; background: var(--navy-dark);
+      background-image: url('./assets/cta-bg.jpg'); background-size: cover; background-position: center;
+      display: flex; align-items: center; justify-content: center; text-align: center; position: relative;
+    }
+    .cta-overlay { position: absolute; inset: 0; background: rgba(8,10,28,.85); }
+    .cta-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(200,155,42,.18) 0%, transparent 60%); }
+    .cta-inner { position: relative; z-index: 2; max-width: 680px; padding: 0 24px; }
+    .cta-inner .h2 { color: #fff; font-size: clamp(48px, 8vw, 96px); margin-bottom: 22px; }
+    .cta-inner p { font-size: 17px; line-height: 1.8; color: rgba(255,255,255,.55); margin-bottom: 36px; }
+
+    /* ── FOOTER ─────────────────────────────────── */
+    footer { background: #060812; padding: 60px 0 28px; }
+    .ft-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 56px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,.05); margin-bottom: 28px; }
+    .ft-logo-img { height: 64px; width: auto; margin-bottom: 16px; }
+    .ft-brand p { font-size: 13px; line-height: 1.8; color: rgba(255,255,255,.4); max-width: 300px; }
+    .ft-col h4 { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.9); margin-bottom: 18px; }
+    .ft-links { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .ft-links a { font-size: 13px; color: rgba(255,255,255,.35); transition: color .2s; }
+    .ft-links a:hover { color: var(--gold); }
+    .ft-social { display: flex; gap: 10px; margin-top: 22px; }
+    .soc { width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; font-size: 15px; transition: all .2s; color: rgba(255,255,255,.6); }
+    .soc:hover { border-color: var(--gold); background: var(--gold); color: #fff; }
+    .ft-bottom { text-align: center; font-size: 12px; color: rgba(255,255,255,.2); }
+
+    /* ── DIVIDER ────────────────────────────────── */
+    .gold-line { width: 48px; height: 3px; background: var(--gold); margin: 0 auto 40px; border-radius: 2px; }
+    .gold-line-left { width: 48px; height: 3px; background: var(--gold); margin: 0 0 24px; border-radius: 2px; }
+
+    /* ── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 1024px) {
+      .grid4 { grid-template-columns: repeat(2,1fr); }
+      .stats  { grid-template-columns: repeat(2,1fr); gap: 48px; }
+    }
+    @media (max-width: 768px) {
+      .pad { padding: 70px 0; }
+      .nav-links, .nav-btn { display: none; }
+      .hamburger { display: flex; }
+      #about .grid2 { grid-template-columns: 1fr; gap: 40px; }
+      .grid3     { grid-template-columns: 1fr 1fr; }
+      .cat-grid  { grid-template-columns: 1fr 1fr; }
+      .hor-grid  { grid-template-columns: 1fr; }
+      .pr-grid   { grid-template-columns: 1fr; }
+      .testi-grid{ grid-template-columns: 1fr; }
+      .ft-top    { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .ft-brand  { grid-column: span 2; }
+      .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 200px); }
+      .g-item:first-child { grid-row: span 1; }
+    }
+    @media (max-width: 480px) {
+      .grid3  { grid-template-columns: 1fr; }
+      .stats  { grid-template-columns: 1fr 1fr; }
+      .gallery{ grid-template-columns: 1fr; grid-template-rows: repeat(5, 220px); }
+      .hero-btns { flex-direction: column; align-items: flex-start; }
+    }
+    /* ── LIGHTBOX ───────────────────────────────── */
+    #lightbox {
+      position: fixed; inset: 0; z-index: 10000;
+      background: rgba(4,5,18,.97);
+      backdrop-filter: blur(8px);
+      display: none; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 16px 64px 16px;
+      gap: 14px;
+    }
+    #lightbox.open { display: flex; }
+    .lb-stage {
+      position: relative; flex: 1; width: 100%;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 0;
+    }
+    #lb-img {
+      max-width: 100%; max-height: calc(100vh - 160px);
+      object-fit: contain; border-radius: 4px;
+      transition: opacity .3s ease;
+      box-shadow: 0 24px 80px rgba(0,0,0,.6);
+    }
+    .lb-counter {
+      position: absolute; bottom: -28px; left: 50%; transform: translateX(-50%);
+      font-size: 11px; font-weight: 700; letter-spacing: 3px;
+      color: rgba(255,255,255,.35); text-transform: uppercase;
+    }
+    .lb-close {
+      position: fixed; top: 20px; right: 24px;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.7); width: 46px; height: 46px;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all .2s; z-index: 2;
+    }
+    .lb-close:hover { background: var(--gold); border-color: var(--gold); color: #fff; }
+    .lb-prev, .lb-next {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.8); width: 52px; height: 52px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all .2s; z-index: 2;
+    }
+    .lb-prev { left: 16px; } .lb-next { right: 16px; }
+    .lb-prev:hover, .lb-next:hover { background: var(--gold); border-color: var(--gold); color: #fff; }
+    .lb-thumbs {
+      display: flex; gap: 8px; overflow-x: auto; padding: 6px 0;
+      max-width: min(100%, 900px); flex-shrink: 0;
+      scrollbar-width: thin; scrollbar-color: var(--gold) transparent;
+    }
+    .lb-thumbs::-webkit-scrollbar { height: 3px; }
+    .lb-thumbs::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+    .lb-thumb {
+      width: 62px; height: 62px; flex-shrink: 0; border-radius: 4px;
+      background-size: cover; background-position: center;
+      border: 2px solid rgba(255,255,255,.08); cursor: pointer;
+      transition: border-color .2s, transform .2s, opacity .2s; opacity: .5;
+    }
+    .lb-thumb:hover { opacity: .85; transform: scale(1.06); }
+    .lb-thumb.active { border-color: var(--gold); opacity: 1; transform: scale(1.1); }
+    @media (max-width: 600px) {
+      #lightbox { padding: 12px 12px 12px; }
+      .lb-prev { left: 6px; } .lb-next { right: 6px; }
+      .lb-prev, .lb-next { width: 40px; height: 40px; }
+      .lb-thumb { width: 50px; height: 50px; }
+    }
+
+    /* ── PREMIUM EFFECTS ────────────────────────── */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; height: 3px; z-index: 9999; width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+      box-shadow: 0 0 16px rgba(200,155,42,.9), 0 0 5px rgba(200,155,42,1);
+      transition: width .1s linear; pointer-events: none;
+    }
+    .cursor-glow {
+      position: fixed; pointer-events: none; z-index: 9997;
+      width: 520px; height: 520px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,155,42,.07) 0%, transparent 65%);
+      transform: translate(-50%, -50%);
+      transition: left .1s ease-out, top .1s ease-out;
+      left: -999px; top: -999px;
+    }
+    #hero-canvas { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+    .btn { position: relative; overflow: hidden; }
+    .hero-h1 .acc {
+      background: linear-gradient(90deg, var(--gold) 0%, #f0d070 40%, var(--gold) 60%, var(--gold-light) 80%, var(--gold) 100%);
+      background-size: 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: goldShimmer 4s linear infinite;
+    }
+    @keyframes goldShimmer {
+      0%   { background-position: 200% center; }
+      100% { background-position: -200% center; }
+    }
+    .g-item { background-size: 105%; transition: background-size .8s cubic-bezier(.25,.46,.45,.94); }
+    .g-item:hover { background-size: 115%; transform: none; }
+    .val-card, .pr-card, .cat-card { will-change: transform; }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────── -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero">
+        <img src="./assets/logo-dorado.png" alt="Medallo Fútbol Club" class="nav-logo-img">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">Nosotros</a></li>
+        <li><a href="#horarios">Horarios</a></li>
+        <li><a href="#categorias">Categorías</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#precios">Precios</a></li>
+      </ul>
+      <a href="https://wa.me/573001987482?text=Hola%2C%20quiero%20información%20de%20Medallo%20FC" class="nav-btn" target="_blank">Inscribirme</a>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-pattern"></div>
+  <div class="container">
+    <div class="hero-content">
+      <p class="hero-eye fu">Medallo Fútbol Club · Medellín, Colombia</p>
+      <h1 class="hero-h1 fu d1">
+        Nacidas<br>en <span class="acc">Medallo.</span><br>
+        Preparadas<br>para el mundo.
+      </h1>
+      <p class="hero-sub fu d2">
+        Somos un club oficial de fútbol femenino de Medellín que forma jugadoras, líderes y grandes personas a través del deporte. Aquí entrenamos para competir, crecer y construir amistades que duran toda la vida.
+      </p>
+      <div class="hero-btns fu d3">
+        <a href="https://wa.me/573001987482?text=Quiero%20entrenar%20con%20Medallo%20FC" class="btn btn-gold" target="_blank">Entrena con nosotros</a>
+        <a href="#about" class="btn btn-outline">Conoce Medallo</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ── PHRASE ────────────────────────────────────── -->
+<div class="phrase">
+  <div class="container">
+    <p class="fu">
+      En Medallo no solo enseñamos fútbol.<br>
+      Formamos mujeres <span>fuertes, disciplinadas</span> y apasionadas por sus sueños.
+    </p>
+  </div>
+</div>
+
+<!-- ── ABOUT ─────────────────────────────────────── -->
+<section id="about" class="pad">
+  <div class="container">
+    <div class="grid2">
+      <div class="about-img fu">
+        <div class="ph"></div>
+        <div class="gold-sq"></div>
+      </div>
+      <div class="about-body fu d2">
+        <span class="tag">¿Qué es Medallo?</span>
+        <div class="gold-line-left"></div>
+        <h2 class="h2">Más que un club.<br>Una familia.</h2>
+        <p class="lead">Medallo Fútbol Club nació con un propósito claro: abrir oportunidades para niñas y mujeres a través del fútbol.</p>
+        <p class="lead">Creemos que una cancha puede convertirse en una escuela de liderazgo, disciplina, confianza y amistad. Entrenamos para competir, pero también para crecer como personas.</p>
+        <p class="lead">Porque cada entrenamiento construye mucho más que una jugadora. Construye una historia.</p>
+        <a href="#" class="btn btn-dark" style="margin-top:4px;">Conoce nuestra historia</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── VALUES ────────────────────────────────────── -->
+<section id="valores" class="pad">
+  <div class="container">
+    <div class="sec-head fu">
+      <span class="tag">Lo que nos mueve</span>
+      <div class="gold-line"></div>
+      <h2 class="h2">Nuestros valores</h2>
+    </div>
+    <div class="grid3">
+      <div class="val-card fu d1"><div class="val-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3 class="val-name">Pasión</h3><p class="val-text">Jugamos con el corazón en cada entrenamiento y cada partido.</p></div>
+      <div class="val-card fu d2"><div class="val-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3 class="val-name">Trabajo en equipo</h3><p class="val-text">Creemos que nadie gana sola.</p></div>
+      <div class="val-card fu d3"><div class="val-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><h3 class="val-name">Excelencia</h3><p class="val-text">Buscamos mejorar cada día dentro y fuera de la cancha.</p></div>
+      <div class="val-card fu d4"><div class="val-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div><h3 class="val-name">Inclusión</h3><p class="val-text">Todas tienen un lugar para crecer.</p></div>
+      <div class="val-card fu d5"><div class="val-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><h3 class="val-name">Formación integral</h3><p class="val-text">El fútbol es solo el comienzo.</p></div>
+      <div class="val-card fu d6"><div class="val-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 class="val-name">Compromiso</h3><p class="val-text">Honramos el esfuerzo, la disciplina y el respeto.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── POR QUÉ ────────────────────────────────────── -->
+<section id="porque" class="pad">
+  <div class="container">
+    <div class="sec-head fu">
+      <span class="tag">Por qué elegirnos</span>
+      <div class="gold-line"></div>
+      <h2 class="h2" style="color:#fff">Todo lo que necesitas<br>para crecer está aquí.</h2>
+    </div>
+    <div class="grid4">
+      <div class="pq-card fu d1"><div class="pq-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div><p class="pq-text">Entrenadores certificados nacionales e internacionales</p></div>
+      <div class="pq-card fu d2"><div class="pq-icon"><svg viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg></div><p class="pq-text">Participación permanente en torneos</p></div>
+      <div class="pq-card fu d3"><div class="pq-icon"><svg viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-1.14Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.14Z"/></svg></div><p class="pq-text">Psicología deportiva</p></div>
+      <div class="pq-card fu d4"><div class="pq-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><p class="pq-text">Fisioterapia grupal</p></div>
+      <div class="pq-card fu d1"><div class="pq-icon"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div><p class="pq-text">Convenios y beneficios exclusivos</p></div>
+      <div class="pq-card fu d2"><div class="pq-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><p class="pq-text">Desarrollo físico y emocional</p></div>
+      <div class="pq-card fu d3"><div class="pq-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><p class="pq-text">Ambiente sano y respetuoso</p></div>
+      <div class="pq-card fu d4"><div class="pq-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><p class="pq-text">Club oficialmente constituido</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GALLERY ────────────────────────────────────── -->
+<section id="galeria" class="pad">
+  <div class="container">
+    <div class="gal-head fu">
+      <span class="tag">Momentos Medallo</span>
+      <div class="gold-line"></div>
+      <h2 class="h2">Así se vive Medallo</h2>
+      <p class="lead">Entrenamientos. Competencias. Celebraciones. Amistades.<br>Momentos que construyen nuestra historia.</p>
+    </div>
+    <div class="gallery">
+      <div class="g-item fu d1"></div>
+      <div class="g-item fu d2"></div>
+      <div class="g-item fu d3"></div>
+      <div class="g-item fu d2"></div>
+      <div class="g-item fu d3"></div>
+    </div>
+    <div style="text-align:center;margin-top:40px;" class="fu d4">
+      <button class="btn btn-outline lb-open-all" style="border-color:var(--gold);color:var(--gold);">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Ver todas las fotos
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ── HORARIOS ───────────────────────────────────── -->
+<section id="horarios" class="pad">
+  <div class="container">
+    <div class="sec-head fu">
+      <span class="tag">Entrenamientos</span>
+      <div class="gold-line"></div>
+      <h2 class="h2">Siempre hay un espacio<br>para entrenar.</h2>
+    </div>
+    <div class="hor-grid">
+      <div class="hor-card fu d1">
+        <div class="hor-head">
+          <div class="hor-sede">Sede 1</div>
+          <div class="hor-name">Canchas Chalacas Gol</div>
+        </div>
+        <div class="hor-slots">
+          <div class="slot"><span class="slot-d">Jueves</span><span class="slot-h">5:00 p.m.</span></div>
+          <div class="slot"><span class="slot-d">Sábados</span><span class="slot-h">9:00 a.m.</span></div>
+        </div>
+      </div>
+      <div class="hor-card fu d2">
+        <div class="hor-head">
+          <div class="hor-sede">Sede 2</div>
+          <div class="hor-name">Canchas María Luisa Calle</div>
+        </div>
+        <div class="hor-slots">
+          <div class="slot"><span class="slot-d">Lunes</span><span class="slot-h">5:00 p.m.</span></div>
+        </div>
+      </div>
+      <div class="hor-card fu d3">
+        <div class="hor-head">
+          <div class="hor-sede">Sede 3</div>
+          <div class="hor-name">Unidad Deportiva Belén</div>
+        </div>
+        <div class="hor-slots">
+          <div class="slot"><span class="slot-d">Miércoles</span><span class="slot-h">8:00 p.m.</span></div>
+          <div class="slot"><span class="slot-d">Viernes</span><span class="slot-h">7:00 p.m.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="hor-cta fu">
+      <p><strong>¿No sabes cuál es tu categoría?</strong><br>Nuestro equipo te ayudará.</p>
+      <a href="https://wa.me/573001987482?text=Hola%2C%20no%20sé%20cuál%20es%20mi%20categoría%20en%20Medallo%20FC" class="btn btn-gold" target="_blank">Hablar con Medallo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CATEGORÍAS ─────────────────────────────────── -->
+<section id="categorias" class="pad">
+  <div class="container">
+    <div class="sec-head fu">
+      <span class="tag">Para todas las edades</span>
+      <div class="gold-line"></div>
+      <h2 class="h2">Desde los 3 años.</h2>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card fu d1"><div class="cat-icon"><svg viewBox="0 0 24 24"><path d="M12 22V12"/><path d="M5 12c.5-4.8 4.2-8 7-10 2.8 2 6.5 5.2 7 10"/><path d="M5 12H2l1 3h2"/><path d="M19 12h3l-1 3h-2"/><path d="M8 22h8"/></svg></div><h3 class="cat-name">Semillero</h3><p class="cat-age">3 – 6 años</p></div>
+      <div class="cat-card fu d2"><div class="cat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg></div><h3 class="cat-name">Formación</h3><p class="cat-age">7 – 12 años</p></div>
+      <div class="cat-card fu d3"><div class="cat-icon"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h3 class="cat-name">Desarrollo</h3><p class="cat-age">13 – 15 años</p></div>
+      <div class="cat-card fu d4"><div class="cat-icon"><svg viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg></div><h3 class="cat-name">Competencia</h3><p class="cat-age">15 años en adelante</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRECIOS ────────────────────────────────────── -->
+<section id="precios" class="pad">
+  <div class="container">
+    <div class="sec-head fu">
+      <span class="tag">Inversión</span>
+      <div class="gold-line"></div>
+      <h2 class="h2" style="color:#fff">Comienza hoy.</h2>
+      <p class="lead" style="color:rgba(255,255,255,.45);margin:14px auto 0;">No esperes el momento perfecto.<br>Empieza a construirlo.</p>
+    </div>
+    <div class="pr-grid">
+      <div class="pr-card fu d1">
+        <p class="pr-label">Hasta 15 años</p>
+        <div class="pr-row"><span class="pr-concepto">Matrícula</span><span class="pr-valor">$150.000</span></div>
+        <div class="pr-row"><span class="pr-concepto">Mensualidad</span><span class="pr-valor">$60.000</span></div>
+      </div>
+      <div class="pr-card fu d2">
+        <p class="pr-label">Desde los 15 años</p>
+        <div class="pr-row"><span class="pr-concepto">Matrícula</span><span class="pr-valor">$130.000</span></div>
+        <div class="pr-row"><span class="pr-concepto">Mensualidad</span><span class="pr-valor">$50.000</span></div>
+      </div>
+    </div>
+    <div class="pr-incl fu">
+      <p class="pr-incl-title">Incluye</p>
+      <ul><li>Primer uniforme</li><li>Primer mes de entrenamiento</li></ul>
+    </div>
+    <div class="pr-cta fu">
+      <a href="https://wa.me/573001987482?text=Quiero%20hacer%20parte%20de%20Medallo%20FC" class="btn btn-gold" style="font-size:14px;padding:17px 44px;" target="_blank">Quiero hacer parte de Medallo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIOS ────────────────────────────────── -->
+<section id="testimonios" class="pad">
+  <div class="container">
+    <div class="sec-head fu">
+      <span class="tag">Lo que dicen ellas</span>
+      <div class="gold-line"></div>
+      <h2 class="h2" style="color:#fff">Historias reales.</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="t-card fu d1">
+        <div class="t-q">"</div>
+        <p class="t-text">En solo tres meses mejoré muchísimo mi nivel y fui convocada al equipo principal para competir en torneos como la Liga de Envigado.</p>
+        <div class="t-author"><div class="t-avatar">S</div><div><p class="t-name">Sara M.</p><p class="t-role">Jugadora · Categoría Competencia</p></div></div>
+      </div>
+      <div class="t-card fu d2">
+        <div class="t-q">"</div>
+        <p class="t-text">Medallo me enseñó que el fútbol es mucho más que un deporte. Aquí encontré amigas, disciplina y la confianza que necesitaba en mi vida.</p>
+        <div class="t-author"><div class="t-avatar">V</div><div><p class="t-name">Valentina R.</p><p class="t-role">Jugadora · Categoría Desarrollo</p></div></div>
+      </div>
+      <div class="t-card fu d3">
+        <div class="t-q">"</div>
+        <p class="t-text">Mi hija llegó tímida y sin creer en sí misma. Hoy es la capitana de su equipo. Gracias Medallo por lo que hacen con estas niñas.</p>
+        <div class="t-author"><div class="t-avatar">M</div><div><p class="t-name">Marcela T.</p><p class="t-role">Mamá · Semillero</p></div></div>
+      </div>
+      <div class="t-card fu d4">
+        <div class="t-q">"</div>
+        <p class="t-text">Los entrenadores son increíbles. Se nota que trabajan con propósito, no solo para ganar partidos sino para formar personas íntegras.</p>
+        <div class="t-author"><div class="t-avatar">L</div><div><p class="t-name">Luisa F.</p><p class="t-role">Jugadora · Categoría Formación</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── IMPACTO ────────────────────────────────────── -->
+<section id="impacto" class="pad">
+  <div class="imp-overlay"></div>
+  <div class="imp-glow"></div>
+  <div class="container">
+    <div class="imp-inner">
+      <span class="tag fu">Nuestro propósito</span>
+      <div class="gold-line fu d1"></div>
+      <h2 class="h2 fu d1" style="color:#fff">Nuestro sueño va<br>más allá del fútbol.</h2>
+      <p class="lead fu d2">Creemos que el deporte puede transformar comunidades. Trabajamos para que cada niña encuentre en Medallo un espacio seguro donde descubrir su talento, fortalecer su confianza y construir un mejor futuro.</p>
+      <div class="stats">
+        <div class="stat fu d1">
+          <p class="stat-n"><span class="stat-counter" data-target="200">0</span><span class="acc">+</span></p>
+          <p class="stat-lbl">Niñas impactadas<br>cada año</p>
+        </div>
+        <div class="stat fu d2"><p class="stat-ico"><svg viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg></p><p class="stat-lbl">Participación en torneos<br>competitivos</p></div>
+        <div class="stat fu d3"><p class="stat-ico"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></p><p class="stat-lbl">Formación deportiva<br>y humana</p></div>
+        <div class="stat fu d4"><p class="stat-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></p><p class="stat-lbl">Red de apoyo<br>para las familias</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA FINAL ──────────────────────────────────── -->
+<section id="cta">
+  <div class="cta-overlay"></div>
+  <div class="cta-glow"></div>
+  <div class="cta-inner">
+    <h2 class="h2 fu">Tu historia puede<br>comenzar hoy.</h2>
+    <p class="fu d1">En Medallo siempre habrá un lugar para quien esté dispuesto a entrenar con disciplina, jugar con pasión y crecer junto a un equipo que nunca deja de creer.</p>
+    <a href="https://wa.me/573001987482?text=Quiero%20agendar%20mi%20primera%20clase%20gratis%20en%20Medallo%20FC" class="btn btn-gold fu d2" style="font-size:14px;padding:17px 44px;" target="_blank">Agenda tu primera clase gratis</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <img src="./assets/logo-dorado.png" alt="Medallo Fútbol Club" class="ft-logo-img">
+        <p>Medallo Fútbol Club es una corporación sin ánimo de lucro dedicada a transformar vidas a través del fútbol femenino, la formación integral y el desarrollo social.</p>
+        <div class="ft-social">
+          <a href="https://instagram.com/medallofutbolclub" class="soc" target="_blank" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://wa.me/573001987482" class="soc" target="_blank" aria-label="WhatsApp"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+        </div>
+      </div>
+      <div class="ft-col">
+        <h4>Páginas</h4>
+        <ul class="ft-links">
+          <li><a href="#hero">Inicio</a></li>
+          <li><a href="#about">Nosotros</a></li>
+          <li><a href="#horarios">Entrenamientos</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#precios">Inscripciones</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Contacto</h4>
+        <ul class="ft-links">
+          <li><a href="https://wa.me/573001987482" target="_blank">WhatsApp</a></li>
+          <li><a href="https://instagram.com/medallofutbolclub" target="_blank">@medallofutbolclub</a></li>
+          <li><a href="#">Medellín, Colombia</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Documentos legales</h4>
+        <ul class="ft-links">
+          <li><a href="./legal/#doc-1">Denominación e identificación</a></li>
+          <li><a href="./legal/#doc-2">Descripción de la actividad meritoria</a></li>
+          <li><a href="./legal/#doc-3">Monto y destino del excedente neto</a></li>
+          <li><a href="./legal/#doc-4">Asignaciones permanentes</a></li>
+          <li><a href="./legal/">Ver todos los documentos</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <p>© 2026 Medallo Fútbol Club. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60));
+
+  // Fade-up
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+
+  // Counter
+  const cobs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target, target = +el.dataset.target, step = target / (2000 / 16);
+      let cur = 0;
+      const t = setInterval(() => { cur += step; if (cur >= target) { el.textContent = target; clearInterval(t); } else { el.textContent = Math.floor(cur); } }, 16);
+      cobs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-counter').forEach(el => cobs.observe(el));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  // ── SCROLL PROGRESS BAR ─────────────────────────
+  const spb = document.createElement('div');
+  spb.id = 'scroll-progress';
+  document.body.prepend(spb);
+  window.addEventListener('scroll', () => {
+    spb.style.width = (scrollY / (document.body.scrollHeight - innerHeight) * 100) + '%';
+  }, { passive: true });
+
+  // ── CURSOR GLOW ──────────────────────────────────
+  const cg = document.createElement('div');
+  cg.className = 'cursor-glow';
+  document.body.appendChild(cg);
+  document.addEventListener('mousemove', e => {
+    cg.style.left = e.clientX + 'px';
+    cg.style.top  = e.clientY + 'px';
+  }, { passive: true });
+
+  // ── HERO PARALLAX ────────────────────────────────
+  const heroEl = document.getElementById('hero');
+  window.addEventListener('scroll', () => {
+    if (scrollY < heroEl.offsetHeight * 1.5)
+      heroEl.style.backgroundPositionY = `calc(top + ${scrollY * 0.35}px)`;
+  }, { passive: true });
+
+  // ── FLOATING PARTICLES (HERO) ────────────────────
+  (function () {
+    const cvs = document.createElement('canvas');
+    cvs.id = 'hero-canvas';
+    heroEl.appendChild(cvs);
+    const ctx = cvs.getContext('2d');
+    let W, H, ptcls = [];
+
+    const resize = () => {
+      W = cvs.width  = heroEl.offsetWidth;
+      H = cvs.height = heroEl.offsetHeight;
+    };
+    resize();
+    new ResizeObserver(resize).observe(heroEl);
+
+    const mkP = () => ({
+      x: Math.random() * W, y: H + 10,
+      r: Math.random() * 1.6 + .3,
+      vx: (Math.random() - .5) * .45, vy: -(Math.random() * .9 + .25),
+      a: Math.random() * .45 + .08, life: 0,
+      maxLife: Math.random() * 200 + 80,
+      gold: Math.random() > .6
+    });
+
+    for (let i = 0; i < 65; i++) { const p = mkP(); p.y = Math.random() * H; ptcls.push(p); }
+
+    (function tick() {
+      ctx.clearRect(0, 0, W, H);
+      if (ptcls.length < 75) ptcls.push(mkP());
+      ptcls = ptcls.filter(p => {
+        p.x += p.vx; p.y += p.vy; p.life++;
+        const fade = Math.min(p.life / 25, 1) * Math.min((p.maxLife - p.life) / 25, 1);
+        ctx.save();
+        ctx.globalAlpha = p.a * fade;
+        ctx.fillStyle = p.gold ? '#C89B2A' : 'rgba(255,255,255,.85)';
+        ctx.shadowBlur = p.gold ? 8 : 3;
+        ctx.shadowColor = p.gold ? '#E0B84A' : '#fff';
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+        ctx.restore();
+        return p.life < p.maxLife && p.y > -10;
+      });
+      requestAnimationFrame(tick);
+    })();
+  })();
+
+  // ── 3D TILT ON CARDS ─────────────────────────────
+  document.querySelectorAll('.val-card, .pr-card, .cat-card').forEach(el => {
+    el.addEventListener('mousemove', e => {
+      const r = el.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width  - .5;
+      const y = (e.clientY - r.top)  / r.height - .5;
+      el.style.transform = `perspective(700px) rotateX(${-y * 10}deg) rotateY(${x * 10}deg) translateY(-6px) scale(1.02)`;
+      el.style.boxShadow = `${-x * 18}px ${-y * 18}px 36px rgba(200,155,42,.18)`;
+    });
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = '';
+      el.style.boxShadow = '';
+    });
+  });
+
+  // ── MAGNETIC BUTTONS ─────────────────────────────
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const r = btn.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width / 2) * .28;
+      const y = (e.clientY - r.top  - r.height / 2) * .28;
+      btn.style.transform = `translate(${x}px,${y}px)`;
+    });
+    btn.addEventListener('mouseleave', () => btn.style.transform = '');
+  });
+
+  // ── RIPPLE ON CLICK ──────────────────────────────
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const r = btn.getBoundingClientRect();
+      const d = Math.max(r.width, r.height) * 2.2;
+      const rpl = Object.assign(document.createElement('span'), {});
+      Object.assign(rpl.style, {
+        position: 'absolute', width: d + 'px', height: d + 'px', borderRadius: '50%',
+        background: 'rgba(255,255,255,.22)',
+        left: (e.clientX - r.left - d / 2) + 'px', top: (e.clientY - r.top - d / 2) + 'px',
+        transform: 'scale(0)', transition: 'transform .55s ease, opacity .55s ease',
+        opacity: '1', pointerEvents: 'none'
+      });
+      btn.appendChild(rpl);
+      requestAnimationFrame(() => { rpl.style.transform = 'scale(1)'; rpl.style.opacity = '0'; });
+      setTimeout(() => rpl.remove(), 650);
+    });
+  });
+
+  // ── GALLERY ZOOM ─────────────────────────────────
+  document.querySelectorAll('.g-item').forEach(g => {
+    g.addEventListener('mouseenter', () => g.style.backgroundSize = '115%');
+    g.addEventListener('mouseleave', () => g.style.backgroundSize = '105%');
+  });
+</script>
+
+<!-- ── LIGHTBOX ────────────────────────────────────── -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Galería de fotos">
+  <button class="lb-close" aria-label="Cerrar">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <button class="lb-prev" aria-label="Anterior">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="lb-next" aria-label="Siguiente">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <div class="lb-stage">
+    <img id="lb-img" src="" alt="Foto Medallo FC">
+    <div class="lb-counter"><span id="lb-cur">1</span>&thinsp;/&thinsp;<span id="lb-tot">17</span></div>
+  </div>
+  <div class="lb-thumbs" id="lb-thumbs"></div>
+</div>
+
+<script>
+  const PHOTOS = [
+    './assets/gallery-1.jpg','./assets/gallery-2.jpg','./assets/gallery-3.jpg',
+    './assets/gallery-4.jpg','./assets/gallery-5.jpg','./assets/gallery-6.jpg',
+    './assets/gallery-7.jpg','./assets/gallery-8.jpg','./assets/gallery-9.jpg',
+    './assets/gallery-10.jpg','./assets/gallery-11.jpg','./assets/gallery-12.jpg',
+    './assets/gallery-13.jpg','./assets/gallery-14.jpg','./assets/gallery-15.jpg',
+    './assets/gallery-16.jpg','./assets/gallery-17.jpg'
+  ];
+
+  let lbIdx = 0;
+  const lb      = document.getElementById('lightbox');
+  const lbImg   = document.getElementById('lb-img');
+  const lbCur   = document.getElementById('lb-cur');
+  const lbTot   = document.getElementById('lb-tot');
+  const lbTmbs  = document.getElementById('lb-thumbs');
+
+  lbTot.textContent = PHOTOS.length;
+
+  PHOTOS.forEach((src, i) => {
+    const t = document.createElement('div');
+    t.className = 'lb-thumb';
+    t.style.backgroundImage = `url('${src}')`;
+    t.setAttribute('aria-label', `Foto ${i + 1}`);
+    t.addEventListener('click', () => lbGo(i));
+    lbTmbs.appendChild(t);
+  });
+
+  function lbOpen(idx) {
+    lbIdx = idx ?? 0;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lbRender(true);
+  }
+  function lbClose() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function lbGo(idx) {
+    lbIdx = ((idx % PHOTOS.length) + PHOTOS.length) % PHOTOS.length;
+    lbRender();
+  }
+  function lbRender(instant) {
+    lbImg.style.opacity = instant ? '1' : '0';
+    lbImg.src = PHOTOS[lbIdx];
+    lbImg.onload = () => { lbImg.style.opacity = '1'; };
+    lbCur.textContent = lbIdx + 1;
+    lbTmbs.querySelectorAll('.lb-thumb').forEach((t, i) => t.classList.toggle('active', i === lbIdx));
+    const active = lbTmbs.children[lbIdx];
+    if (active) active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+
+  document.querySelector('.lb-close').addEventListener('click', lbClose);
+  document.querySelector('.lb-prev').addEventListener('click', () => lbGo(lbIdx - 1));
+  document.querySelector('.lb-next').addEventListener('click', () => lbGo(lbIdx + 1));
+  lb.addEventListener('click', e => { if (e.target === lb) lbClose(); });
+
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape')     lbClose();
+    if (e.key === 'ArrowLeft')  lbGo(lbIdx - 1);
+    if (e.key === 'ArrowRight') lbGo(lbIdx + 1);
+  });
+
+  // Swipe support
+  let tsX = 0;
+  lb.addEventListener('touchstart', e => { tsX = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].clientX - tsX;
+    if (Math.abs(dx) > 50) lbGo(dx < 0 ? lbIdx + 1 : lbIdx - 1);
+  });
+
+  // Open from grid
+  document.querySelectorAll('.g-item').forEach((g, i) => {
+    g.style.cursor = 'pointer';
+    g.addEventListener('click', () => lbOpen(i));
+  });
+
+  // Open all button
+  document.querySelectorAll('.lb-open-all').forEach(btn =>
+    btn.addEventListener('click', () => lbOpen(0))
+  );
+</script>
+</body>
+</html>
