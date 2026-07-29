@@ -219,7 +219,7 @@
 
     /* ── PRECIOS ────────────────────────────────── */
     #precios { background: var(--navy-dark); }
-    .pr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; max-width: 780px; margin: 0 auto 28px; }
+    .pr-grid { display: grid; grid-template-columns: 1fr; gap: 22px; max-width: 420px; margin: 0 auto 28px; }
     .pr-card { padding: 36px 32px; border: 1px solid rgba(255,255,255,.09); border-radius: 3px; transition: border-color .3s; }
     .pr-card:hover { border-color: var(--gold); background: rgba(200,155,42,.04); }
     .pr-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
@@ -660,14 +660,9 @@
     </div>
     <div class="pr-grid">
       <div class="pr-card fu d1">
-        <p class="pr-label">Hasta 15 años</p>
+        <p class="pr-label">Desde los 15 años</p>
         <div class="pr-row"><span class="pr-concepto">Matrícula</span><span class="pr-valor">$150.000</span></div>
         <div class="pr-row"><span class="pr-concepto">Mensualidad</span><span class="pr-valor">$60.000</span></div>
-      </div>
-      <div class="pr-card fu d2">
-        <p class="pr-label">Desde los 15 años</p>
-        <div class="pr-row"><span class="pr-concepto">Matrícula</span><span class="pr-valor">$130.000</span></div>
-        <div class="pr-row"><span class="pr-concepto">Mensualidad</span><span class="pr-valor">$50.000</span></div>
       </div>
     </div>
     <div class="pr-incl fu">
@@ -810,15 +805,15 @@
       // Precios
       const p = d.precios;
       if (p) {
-        const cards = document.querySelectorAll('.pr-card');
-        [p.plan_menor, p.plan_mayor].forEach((plan, i) => {
-          if (!cards[i] || !plan) return;
-          const lbl  = cards[i].querySelector('.pr-label');
-          const vals = cards[i].querySelectorAll('.pr-valor');
-          if (lbl)    lbl.textContent  = plan.label;
+        const card = document.querySelector('.pr-card');
+        const plan = p.plan_mayor;
+        if (card && plan) {
+          const lbl  = card.querySelector('.pr-label');
+          const vals = card.querySelectorAll('.pr-valor');
+          if (lbl)     lbl.textContent  = plan.label;
           if (vals[0]) vals[0].textContent = plan.matricula;
           if (vals[1]) vals[1].textContent = plan.mensualidad;
-        });
+        }
         if (p.incluye) {
           const ul = document.querySelector('.pr-incl ul');
           if (ul) ul.innerHTML = p.incluye.map(t => `<li>${t}</li>`).join('');
