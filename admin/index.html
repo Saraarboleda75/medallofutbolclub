@@ -7,6 +7,101 @@
   <title>Admin · Medallo FC</title>
 </head>
 <body>
+  <script>window.CMS_MANUAL_INIT = true;</script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    CMS.init({
+      config: {
+        backend: {
+          name: 'github',
+          repo: 'Saraarboleda75/medallofutbolclub',
+          branch: 'main',
+          auth_type: 'pkce',
+          app_id: 'REEMPLAZAR_CON_TU_CLIENT_ID'
+        },
+        locale: 'es',
+        media_folder: 'cp/medallo/assets',
+        public_folder: '/assets',
+        collections: [
+          {
+            name: 'medallo',
+            label: 'Medallo FC',
+            files: [
+              {
+                name: 'contenido',
+                label: '✏️ Editar textos y precios',
+                file: 'cp/medallo/data.json',
+                format: 'json',
+                fields: [
+                  {
+                    label: '📱 Contacto',
+                    name: 'contacto',
+                    widget: 'object',
+                    fields: [
+                      { label: 'WhatsApp (solo números, sin + ni espacios)', name: 'whatsapp', widget: 'string', hint: 'Ejemplo: 573001987482' },
+                      { label: 'Instagram (sin @)', name: 'instagram', widget: 'string', hint: 'Ejemplo: medallofutbolclub' }
+                    ]
+                  },
+                  {
+                    label: '💰 Precios',
+                    name: 'precios',
+                    widget: 'object',
+                    fields: [
+                      {
+                        label: 'Plan Menores (hasta 15 años)',
+                        name: 'plan_menor',
+                        widget: 'object',
+                        fields: [
+                          { label: 'Etiqueta', name: 'label', widget: 'string', hint: 'Ej: Hasta 15 años' },
+                          { label: 'Matrícula', name: 'matricula', widget: 'string', hint: 'Ej: $150.000' },
+                          { label: 'Mensualidad', name: 'mensualidad', widget: 'string', hint: 'Ej: $60.000' }
+                        ]
+                      },
+                      {
+                        label: 'Plan Mayores (desde 15 años)',
+                        name: 'plan_mayor',
+                        widget: 'object',
+                        fields: [
+                          { label: 'Etiqueta', name: 'label', widget: 'string' },
+                          { label: 'Matrícula', name: 'matricula', widget: 'string' },
+                          { label: 'Mensualidad', name: 'mensualidad', widget: 'string' }
+                        ]
+                      },
+                      {
+                        label: '¿Qué incluye la matrícula?',
+                        name: 'incluye',
+                        widget: 'list',
+                        field: { label: 'Item', name: 'item', widget: 'string' }
+                      }
+                    ]
+                  },
+                  {
+                    label: '🏟️ Horarios de entrenamiento',
+                    name: 'horarios',
+                    widget: 'list',
+                    label_singular: 'Sede',
+                    fields: [
+                      { label: 'Número de sede', name: 'sede', widget: 'string', hint: 'Ej: Sede 1' },
+                      { label: 'Nombre del lugar', name: 'nombre', widget: 'string' },
+                      {
+                        label: 'Horarios',
+                        name: 'slots',
+                        widget: 'list',
+                        label_singular: 'Horario',
+                        fields: [
+                          { label: 'Día(s)', name: 'dia', widget: 'string', hint: 'Ej: Martes y Jueves' },
+                          { label: 'Hora', name: 'hora', widget: 'string', hint: 'Ej: 6:00 p.m.' }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    });
+  </script>
 </body>
 </html>
