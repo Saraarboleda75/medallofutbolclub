@@ -1,0 +1,38 @@
+{
+  "contacto": {
+    "whatsapp": "573001987482",
+    "instagram": "medallofutbolclub"
+  },
+  "precios": {
+    "plan_menor": {
+      "label": "Hasta 15 años",
+      "matricula": "$150.000",
+      "mensualidad": "$60.000"
+    },
+    "plan_mayor": {
+      "label": "Desde los 15 años",
+      "matricula": "$130.000",
+      "mensualidad": "$50.000"
+    },
+    "incluye": [
+      "Primer uniforme",
+      "Primer mes de entrenamiento"
+    ]
+  },
+  "horarios": [
+    {
+      "sede": "Sede 1",
+      "nombre": "Canchas San Diego",
+      "slots": [
+        { "dia": "Viernes", "hora": "6:00 a.m." }
+      ]
+    },
+    {
+      "sede": "Sede 2",
+      "nombre": "Unidad Deportiva Belén",
+      "slots": [
+        { "dia": "Martes y Jueves", "hora": "8:00 p.m." }
+      ]
+    }
+  ]
+}

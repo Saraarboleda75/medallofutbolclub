@@ -1,10 +1,13 @@
 {
   "rewrites": [
-    { "source": "/",                      "destination": "/cp/medallo/index.html" },
+    { "source": "/data.json",             "destination": "/cp/medallo/data.json" },
     { "source": "/assets/:path*",         "destination": "/cp/medallo/assets/:path*" },
     { "source": "/legal",                 "destination": "/cp/medallo/legal/index.html" },
     { "source": "/legal/",               "destination": "/cp/medallo/legal/index.html" },
     { "source": "/legal/docs/:path*",    "destination": "/cp/medallo/legal/docs/:path*" },
-    { "source": "/api/:path*",           "destination": "/api/:path*" }
+    { "source": "/admin",                "destination": "/admin/index.html" },
+    { "source": "/admin/",               "destination": "/admin/index.html" },
+    { "source": "/api/:path*",           "destination": "/api/:path*" },
+    { "source": "/",                      "destination": "/cp/medallo/index.html" }
   ]
 }
