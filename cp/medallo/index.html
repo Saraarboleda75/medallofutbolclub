@@ -285,6 +285,9 @@
     .ft-links { list-style: none; display: flex; flex-direction: column; gap: 9px; }
     .ft-links a { font-size: 13px; color: rgba(255,255,255,.35); transition: color .2s; }
     .ft-links a:hover { color: var(--gold); }
+    .ft-link-destacado { margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,.07); }
+    .ft-link-destacado a { color: var(--gold) !important; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+    .ft-link-destacado a:hover { color: var(--gold-light) !important; gap: 10px; }
     .ft-social { display: flex; gap: 10px; margin-top: 22px; }
     .soc { width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; font-size: 15px; transition: all .2s; color: rgba(255,255,255,.6); }
     .soc:hover { border-color: var(--gold); background: var(--gold); color: #fff; }
@@ -779,7 +782,7 @@
           <li><a href="./legal/#doc-2">Descripción de la actividad meritoria</a></li>
           <li><a href="./legal/#doc-3">Monto y destino del excedente neto</a></li>
           <li><a href="./legal/#doc-4">Asignaciones permanentes</a></li>
-          <li><a href="./legal/">Ver todos los documentos</a></li>
+          <li class="ft-link-destacado"><a href="./legal/">Ver todos los documentos <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></li>
         </ul>
       </div>
     </div>
