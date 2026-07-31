@@ -8,6 +8,7 @@
     { "source": "/admin",                "destination": "/admin/index.html" },
     { "source": "/admin/",               "destination": "/admin/index.html" },
     { "source": "/api/:path*",           "destination": "/api/:path*" },
+    { "source": "/sitemap.xml",            "destination": "/cp/medallo/sitemap.xml" },
     { "source": "/",                      "destination": "/cp/medallo/index.html" }
   ]
 }
