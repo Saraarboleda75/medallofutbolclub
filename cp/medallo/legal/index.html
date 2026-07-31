@@ -198,11 +198,15 @@
     .sidebar-toggle svg { transition: transform .3s; flex-shrink: 0; }
     .sidebar-toggle.open svg { transform: rotate(180deg); }
 
+    /* ── SCROLL WRAPPER PARA TABLAS ── */
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .legal-layout { grid-template-columns: 240px 1fr; gap: 32px; }
     }
     @media (max-width: 768px) {
+      html { overflow-x: hidden; }
       .page-banner { padding: 88px 0 40px; }
       .legal-layout { grid-template-columns: 1fr; gap: 24px; padding: 36px 0 64px; }
       .sidebar { position: static; }
@@ -212,11 +216,13 @@
       .doc-list.open { display: flex; }
       .data-grid { grid-template-columns: 1fr; }
       .data-value { overflow-wrap: break-word; word-break: break-word; }
+      .doc-card { overflow: hidden; }
       .doc-card-body { padding: 22px 18px; }
+      .doc-card-body p,
+      .doc-card-body li { overflow-wrap: break-word; word-break: break-word; }
       .doc-card-header { padding: 16px 18px; flex-wrap: wrap; gap: 10px; }
+      .doc-card-title { flex: 1; min-width: 0; word-break: break-word; }
       .doc-download-btn { margin-left: 0; width: 100%; justify-content: center; }
-      .doc-card-body table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-      .doc-card-body td, .doc-card-body th { white-space: nowrap; }
       .ft-bottom { flex-direction: column; text-align: center; }
     }
     @media (max-width: 480px) {

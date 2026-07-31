@@ -12,6 +12,19 @@ document.querySelectorAll('.doc-card').forEach(card => {
   header.appendChild(a);
 });
 
+// Envolver tablas sin contenedor scroll en un .table-scroll
+document.querySelectorAll('.doc-card-body table').forEach(table => {
+  const parent = table.parentElement;
+  const parentStyle = (parent.getAttribute('style') || '').replace(/\s/g, '');
+  const alreadyWrapped = parentStyle.includes('overflow-x') || parent.classList.contains('table-scroll');
+  if (!alreadyWrapped) {
+    const wrap = document.createElement('div');
+    wrap.className = 'table-scroll';
+    parent.insertBefore(wrap, table);
+    wrap.appendChild(table);
+  }
+});
+
 // Highlight activo en sidebar al hacer scroll
 const sections = document.querySelectorAll('[id^="doc-"]');
 const links = document.querySelectorAll('.doc-list a');
